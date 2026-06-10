@@ -1,0 +1,179 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Saket Sankhla} \\ \vspace{8pt}
+    \small Jodhpur, Rajasthan, India $|$ +91 7891093675 $|$ \href{mailto:saketsankh18@gmail.com}{\underline{saketsankh18@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/saket-sankhla-4a193a277}{\underline{linkedin.com/in/saket-sankhla-4a193a277}} $|$ 
+    \href{https://github.com/SaketSankhla}{\underline{github.com/SaketSankhla}}
+\end{center}
+
+
+%-----------TECHNICAL SPECIALIZATIONS-----------
+\section{Technical Specializations}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{RTL Design \& Protocols:}{ Verilog, SystemVerilog, VHDL, APB \& AHB Bus Protocols, Digital Circuit Design, RTL Architecture} \\ \vspace{2.5pt}
+     \textbf{EDA Tools \& Simulation:}{ Xilinx Vivado, GTKWave, Yosys, OpenLane, Icarus Verilog, Altium Designer} \\ \vspace{2.5pt}
+     \textbf{Embedded Systems \& IoT:}{ ESP32, Arduino, Microcontroller Architecture, PCB Layout \& Schematics, Sensor Integration, I2C, SPI, UART} \\ \vspace{2.5pt}
+     \textbf{Programming Languages:}{ C, C++ (Embedded), Python, Assembly (8085/8086), Dart, JavaScript}
+    }}
+ \end{itemize}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Government Engineering College, Ajmer (GECA)}{Ajmer, Rajasthan, India}
+      {Bachelor of Technology (B.Tech) in Electronics \& Communication Engineering}{Sept. 2023 -- June 2027 (Expected)}
+      \resumeItemListStart
+        \resumeItem{Key Coursework: Digital System Design, Linear Integrated Circuits, Computer Architecture, Optical Fiber Communication, Neural Networks \& Fuzzy Logic.}
+      \resumeItemListEnd
+      
+    \resumeSubheading
+      {KL University}{Guntur, Andhra Pradesh, India}
+      {Bachelor of Technology (B.Tech) in Electronics \& Communication Engineering (Transferred)}{July 2023 -- Sept. 2023}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Defence Research and Development Laboratory (DRDL) - DRDO}{Jodhpur, India}
+      {Summer Intern}{May 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{\textbf{Systems \& Interface Analysis:} Analyze core communication electronics, map RF transceiver modules, and study telemetry bus interfaces for defense applications.}
+        \resumeItem{\textbf{Hardware Integration \& Debugging:} Perform hardware-in-the-loop (HIL) board testing, utilizing logic analyzers and digital oscilloscopes to trace control signal lines and debug timing errors.}
+        \resumeItem{\textbf{Technical Documentation:} Author detailed interface specifications mapping electrical power distribution nodes and sensor cabling matrices.}
+      \resumeItemListEnd
+      
+    \resumeSubheading
+      {IIT Roorkee Drone Hackathon}{Roorkee, India}
+      {Electronics Lead}{2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Avionics \& Power Distribution:} Designed custom noise-isolated power distribution networks (PDN) and sensor routing schemas for autonomous drone avionics under tight weight and layout constraints.}
+        \resumeItem{\textbf{Sensor Calibration \& Feedback Loops:} Optimized sensor calibration loops and PID controller firmware parameters to stabilize flight control telemetry.}
+        \resumeItem{\textbf{Cross-Functional System Verification:} Led system integration diagnostics, analyzing telemetry logs to verify flight readiness before field operations.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Maven Silicon}{Bengaluru, India}
+      {VLSI Design Intern}{July 2025 -- Aug. 2025}
+      \resumeItemListStart
+        \resumeItem{\textbf{RTL \& Interface Design:} Engineered a synthesizable \href{https://github.com/SaketSankhla/APB-to-AHB-Bridge}{\underline{APB-to-AHB communication protocol bridge}} in SystemVerilog, translating low-bandwidth peripheral signals into high-speed system bus transactions.}
+        \resumeItem{\textbf{Verification \& Testbenches:} Built a verification testbench in SystemVerilog, running behavioral simulations to validate write/read transaction pipelines and bus functional models (BFM).}
+        \resumeItem{\textbf{Waveform \& Timing Analysis:} Conducted timing analysis using Xilinx Vivado logic simulator, locating and correcting setup/hold violations and clock domain crossing (CDC) timing anomalies.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Bharat Sanchar Nigam Limited (BSNL)}{Jodhpur, India}
+      {Telecom Trainee}{June 2024}
+      \resumeItemListStart
+        \resumeItem{\textbf{Infrastructure Analysis:} Studied operational configurations of GSM, PSTN switching systems, and optical fiber communication loops.}
+        \resumeItem{\textbf{Signal Transport Systems:} Analyzed routing, transmission interfaces, and physical cable configurations at central exchange stations.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Technical Projects}
+  \resumeSubHeadingListStart
+    
+    \resumeSubheading
+      {\href{https://github.com/SaketSankhla/smart_energy_meter}{\underline{[Machine Learning \& IoT] Electricity Theft Detector v2.0}}}{ESP32, Python, C++, TensorFlow}
+      {Core Developer}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{True RMS Digital Signal Processing:} Authored optimized ESP32 firmware in C++ featuring True RMS mathematical signal extraction models to compute real-time active load profiles from ZMPT101B and SCT-013 analog telemetry.}
+        \resumeItem{\textbf{Anomaly Detection Debounce Logic:} Programmed a 3-window debounce classifier algorithm to filter input transients, reducing false theft alarms by 40\%.}
+        \resumeItem{\textbf{Deep Learning Theft Detection:} Built and trained a Python CNN-LSTM classifier model on the State Grid Corporation of China (SGCC) smart grid dataset, achieving high-accuracy detection of non-technical distribution losses (theft).}
+        \resumeItem{\textbf{Embedded Logging \& Watchdogs:} Configured Google Sheets REST logging pipelines with automatic hardware watchdog timers and WiFi auto-reconnect loops to guarantee 99.9\% firmware uptime.}
+      \resumeItemListEnd
+          
+    \resumeSubheading
+      {\href{https://github.com/SaketSankhla/Arduino-JARVIS-Desk-Robot}{\underline{[Low-Latency Robotics] Arduino JARVIS Desk Companion}}}{Arduino, Embedded C, Sensors}
+      {Core Developer}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Non-Blocking Control Architecture:} Engineered a cooperative, non-blocking scheduler in Embedded C, polling HC-SR04 sonar detection and DHT11 environmental inputs to update an I2C 1602 LCD display.}
+        \resumeItem{\textbf{Hardware Interface \& Filter Design:} Modeled wiring configurations and physical RC low-pass filters to suppress noise on analog and digital sensor signal paths.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {\href{https://github.com/SaketSankhla/Digital-VLSI-Projects}{\underline{[ASIC/VLSI Design] Digital VLSI Library Blocks}}}{Verilog, Icarus Verilog, GTKWave}
+      {Core Developer}{}
+      \resumeItemListStart
+        \resumeItem{\textbf{Synthesizable RTL Block Design:} Authored synthesizable Verilog modules for fundamental digital blocks including a 4-bit Full Adder (fa\_4bit), Decoders (2-to-4), and multiplexer configurations (2-to-1, 4-to-1, 8-to-1).}
+        \resumeItem{\textbf{RTL Functional Verification:} Constructed custom testbenches, verified logical routing using Icarus Verilog simulation, and analyzed waveforms in GTKWave to confirm zero timing glitches.}
+      \resumeItemListEnd
+          
+  \resumeSubHeadingListEnd
+
+\end{document}

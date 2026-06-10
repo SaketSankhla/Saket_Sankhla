@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saket Sankhla | Resume</title>
+  <meta name="description" content="ATS-friendly technical resume of Saket Sankhla, Digital VLSI & Embedded Systems student.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-base:        #000000;
+      --bg-surface:     #FFFFFF;
+      --bg-card:        rgba(0, 0, 0, 0.01);
+      --border-subtle:  rgba(0, 0, 0, 0.08);
+      --border-mid:     rgba(0, 0, 0, 0.12);
+      --text-primary:   #0F172A;
+      --text-secondary: #374151;
+      --text-muted:     #6B7280;
+      --accent:         #76B900;
+      --accent-blue:    #76B900;
+      --accent-glow:    transparent;
+      
+      --font-sans:      'Inter', system-ui, sans-serif;
+      --font-mono:      'JetBrains Mono', monospace;
+      --transition:     0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      font-size: 15px;
+      padding: 40px 20px 80px 20px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── AMBIENT GLOW ORBS ── */
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      -webkit-filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+      transition: opacity 0.5s ease;
+    }
+
+    .glow-orb-1 {
+      top: -10%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: var(--accent);
+    }
+
+    .glow-orb-2 {
+      bottom: -10%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .glow-orb {
+        filter: blur(100px);
+        -webkit-filter: blur(100px);
+        opacity: 0.06;
+      }
+      .glow-orb-1 { width: 280px; height: 280px; }
+      .glow-orb-2 { width: 320px; height: 320px; }
+    }
+
+    /* Actions Bar */
+    .actions-bar {
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .btn {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all var(--transition);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-back {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-back:hover {
+      background: var(--accent);
+      color: #000000;
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: #FFFFFF;
+      color: #000000;
+      border: 1px solid #FFFFFF;
+      box-shadow: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-blue);
+      color: #FFFFFF;
+      border-color: var(--accent-blue);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(118, 185, 0, 0.3);
+    }
+
+    /* Resume Container */
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 50px 60px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    /* Header */
+    header {
+      background: #000000;
+      margin: -50px -60px 35px -60px;
+      padding: 40px 60px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #C0C0C0;
+    }
+
+    .contact-info a {
+      color: #C0C0C0;
+      text-decoration: none;
+      transition: color var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 30px;
+    }
+
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* Entry structure */
+    .entry {
+      margin-bottom: 20px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 5px 15px;
+    }
+
+    .entry-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    /* Project/Body Link Styles */
+    .project-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .body-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: border-bottom var(--transition);
+      border-bottom: 1px dashed var(--accent);
+    }
+
+    .body-link:hover {
+      border-bottom-style: solid;
+    }
+
+    .entry-subtitle {
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .entry-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .entry-location {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 15px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+      line-height: 1.6;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Skills layout */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .skills-category {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      align-items: flex-start;
+      gap: 15px;
+      font-size: 0.85rem;
+    }
+
+    .skills-cat-name {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .skills-cat-vals {
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px 40px 10px;
+      }
+      
+      .resume-container {
+        padding: 30px 20px;
+        border-radius: 12px;
+      }
+
+      .actions-bar {
+        margin-bottom: 20px;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .entry-header {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .entry-date, .entry-location {
+        margin-top: 2px;
+      }
+
+      .skills-category {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    /* ══════════════════════════════════════
+       PRINT STYLES (Produces standard PDF)
+       ══════════════════════════════════════ */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0.4in 0.4in 0.4in 0.4in !important;
+        font-size: 9.5pt !important;
+        line-height: 1.4 !important;
+      }
+
+      .glow-orb {
+        display: none !important;
+      }
+
+      .actions-bar {
+        display: none !important;
+      }
+
+      .resume-container {
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+      }
+
+      header {
+        margin-bottom: 20px !important;
+      }
+
+      header h1 {
+        color: #000000 !important;
+        font-size: 18pt !important;
+        margin-bottom: 4px !important;
+      }
+
+      .contact-info {
+        color: #000000 !important;
+        font-size: 8pt !important;
+        gap: 15px !important;
+      }
+
+      .contact-info a {
+        color: #000000 !important;
+      }
+
+      .contact-info a i {
+        display: none !important; /* Hide icons in print for pure ATS text */
+      }
+
+      section {
+        margin-bottom: 18px !important;
+      }
+
+      .section-title {
+        color: #000000 !important;
+        font-size: 10.5pt !important;
+        margin-bottom: 8px !important;
+        border-bottom: 1px solid #000000 !important;
+        padding-bottom: 3px !important;
+      }
+
+      .section-title i {
+        display: none !important;
+      }
+
+      .entry {
+        margin-bottom: 12px !important;
+        page-break-inside: avoid;
+      }
+
+      .entry-title {
+        color: #000000 !important;
+        font-size: 9.5pt !important;
+      }
+
+      .project-link {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
+
+      .body-link {
+        color: #000000 !important;
+        border-bottom: none !important;
+        font-weight: normal !important;
+      }
+
+      .entry-subtitle {
+        color: #333333 !important;
+        font-size: 8.5pt !important;
+      }
+
+      .entry-date {
+        color: #000000 !important;
+        font-size: 8pt !important;
+      }
+
+      .entry-location {
+        color: #444444 !important;
+        font-size: 8pt !important;
+      }
+
+      .bullet-list li {
+        color: #222222 !important;
+        font-size: 8.5pt !important;
+        margin-bottom: 3px !important;
+        padding-left: 12px !important;
+      }
+
+      .bullet-list li::before {
+        color: #000000 !important;
+        font-size: 9pt !important;
+      }
+
+      .skills-grid {
+        gap: 6px !important;
+      }
+
+      .skills-category {
+        grid-template-columns: 140px 1fr !important;
+        gap: 10px !important;
+        font-size: 8.5pt !important;
+        page-break-inside: avoid;
+      }
+
+      .skills-cat-name {
+        color: #000000 !important;
+      }
+
+      .skills-cat-vals {
+        color: #222222 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AMBIENT GLOW LIGHTING -->
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+
+  <!-- ACTIONS BAR -->
+  <div class="actions-bar">
+    <a href="index.html" class="btn btn-back">
+      <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+    </a>
+    <button onclick="window.print()" class="btn btn-primary">
+      <i class="fa-solid fa-print"></i> Print / Save PDF
+    </button>
+  </div>
+
+  <!-- RESUME BODY -->
+  <div class="resume-container">
+    <header>
+      <h1>Saket Sankhla</h1>
+      <div class="contact-info">
+        <span><i class="fa-solid fa-location-dot"></i> Jodhpur, Rajasthan, India</span>
+        <span><i class="fa-solid fa-phone"></i> +91 7891093675</span>
+        <a href="#" class="contact-email" data-user="saketsankh18" data-domain="gmail.com"><i class="fa-solid fa-envelope"></i> <span class="email-text">loading...</span></a>
+        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/saket-sankhla-4a193a277</a>
+        <a href="https://github.com/SaketSankhla" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> github.com/SaketSankhla</a>
+      </div>
+    </header>
+
+    <!-- TECHNICAL SPECIALIZATIONS -->
+    <section>
+      <div class="section-title">
+        <i class="fa-solid fa-screwdriver-wrench"></i> Technical Specializations
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skills-category">
+          <div class="skills-cat-name">Verification &amp; RTL Design</div>
+          <div class="skills-cat-vals">Constrained-Random Verification, SystemVerilog OOP Testbenches, SystemVerilog Assertions (SVA), Functional Coverage, Verilog, VHDL, AMBA APB/AHB bus protocols, RTL modeling</div>
+        </div>
+        
+        <div class="skills-category">
+          <div class="skills-cat-name">EDA Tools &amp; Methodologies</div>
+          <div class="skills-cat-vals">Icarus Verilog, Xilinx Vivado, GTKWave, Yosys, OpenLane, clock domain crossing (CDC) analysis, static timing analysis (STA)</div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-name">Embedded Hardware &amp; HIL</div>
+          <div class="skills-cat-vals">Hardware-in-the-Loop (HIL) testing, logic analyzers, digital storage oscilloscopes, ESP32, Arduino, Altium Designer (PCB Layout), I2C, SPI, UART</div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-name">Programming &amp; Scripting</div>
+          <div class="skills-cat-vals">C, C++ (Embedded), Python (automation &amp; telemetry parsing), Assembly (8085/8086), Dart, JavaScript</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <div class="section-title">
+        <i class="fa-solid fa-graduation-cap"></i> Education
+      </div>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Government Engineering College, Ajmer (GECA)</span>
+            <span class="entry-subtitle">— Ajmer, Rajasthan, India</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="entry-date">Sept 2023 – June 2027 (Expected)</span>
+          </div>
+        </div>
+        <div class="entry-header" style="margin-top: -4px; margin-bottom: 6px;">
+          <span class="entry-subtitle" style="font-weight: 500;">Bachelor of Technology (B.Tech) in Electronics & Communication Engineering</span>
+          <span class="entry-location">BTU Affiliate</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Relevant Coursework: Digital System Design, Linear Integrated Circuits, Computer Architecture, Optical Fiber Communication, Neural Networks & Fuzzy Logic.</li>
+        </ul>
+      </div>
+
+      <div class="entry" style="margin-top: 15px;">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">KL University</span>
+            <span class="entry-subtitle">— Guntur, Andhra Pradesh, India</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="entry-date">July 2023 – Sept 2023</span>
+          </div>
+        </div>
+        <div style="margin-top: -4px;">
+          <span class="entry-subtitle" style="font-weight: 500;">Bachelor of Technology (B.Tech) in Electronics & Communication Engineering (Transferred)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="section-title">
+        <i class="fa-solid fa-briefcase"></i> Experience
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Defence Research and Development Laboratory (DRDL) - DRDO</span>
+            <span class="entry-subtitle">— Jodhpur, India</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="entry-date">May 2026 – Present</span>
+          </div>
+        </div>
+        <div style="margin-top: -4px; margin-bottom: 6px;">
+          <span class="entry-subtitle" style="font-weight: 500;">Summer Intern (Avionics & Control Electronics)</span>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>HIL Diagnostics & Debugging:</strong> Perform Hardware-in-the-Loop (HIL) board-level testing, tracking bus signal routing with logic analyzers and oscilloscopes to isolate and resolve timing anomalies.</li>
+          <li><strong>Telemetry Interface Mapping:</strong> Analyze avionics control loops, RF transceiver interfaces, and high-reliability defense communication lines to verify interface compatibility.</li>
+          <li><strong>Technical Documentation:</strong> Document system cabling configurations, pinout lists, and electrical power distribution schemas across telemetry sub-systems.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">IIT Roorkee Drone Hackathon</span>
+            <span class="entry-subtitle">— Roorkee, India</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="entry-date">2026</span>
+          </div>
+        </div>
+        <div style="margin-top: -4px; margin-bottom: 6px;">
+          <span class="entry-subtitle" style="font-weight: 500;">Electronics & Avionics Lead</span>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>Avionics Power & Signal Integrity:</strong> Designed noise-isolated Power Distribution Networks (PDN) and sensor traces for drone flight controllers under stringent layout constraints.</li>
+          <li><strong>Control Loop Validation:</strong> Optimized sensor polling registers and tuned PID firmware parameters in C++ to stabilize flight controllers under transient noise profiles.</li>
+          <li><strong>Telemetry Scripting:</strong> Created Python validation scripts to automatically parse telemetry logs, analyzing flight state transitions and diagnostic codes.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Maven Silicon</span>
+            <span class="entry-subtitle">— Bengaluru, India</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="entry-date">July 2025 – August 2025</span>
+          </div>
+        </div>
+        <div style="margin-top: -4px; margin-bottom: 6px;">
+          <span class="entry-subtitle" style="font-weight: 500;">VLSI Design & Verification Intern</span>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>RTL Design:</strong> Developed a synthesizable <a href="https://github.com/SaketSankhla/APB-to-AHB-Bridge" target="_blank" class="body-link">AMBA APB-to-AHB bus bridge</a> in SystemVerilog, implementing pipeline controls and protocol conversion.</li>
+          <li><strong>Constrained-Random Verification:</strong> Constructed a SystemVerilog OOP testbench with Bus Functional Models (BFMs), constraint-based transaction generators, and scoreboards to automate verification.</li>
+          <li><strong>Assertion-Based Verification (ABV):</strong> Authored SystemVerilog Assertions (SVA) to verify interface handshake signals (e.g., HREADY, PENABLE) and state transition rules.</li>
+          <li><strong>Waveform Analysis & Debugging:</strong> Ran behavioral simulations in Icarus Verilog; analyzed waveforms and completed CDC timing analysis to identify and resolve timing violations.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Bharat Sanchar Nigam Limited (BSNL)</span>
+            <span class="entry-subtitle">— Jodhpur, India</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="entry-date">June 2024</span>
+          </div>
+        </div>
+        <div style="margin-top: -4px; margin-bottom: 6px;">
+          <span class="entry-subtitle" style="font-weight: 500;">Telecom Trainee</span>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>Network Routing Analysis:</strong> Inspected configuration maps of central telephone exchanges, optical transport systems, and GSM cellular switches to understand routing signals.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TECHNICAL PROJECTS -->
+    <section>
+      <div class="section-title">
+        <i class="fa-solid fa-code-branch"></i> Technical Projects
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">
+              <a href="https://github.com/SaketSankhla/smart_energy_meter" target="_blank" class="project-link">[Embedded DSP & ML] Electricity Theft Detector v2.0</a>
+            </span>
+            <span class="entry-subtitle">— ESP32, Python, C++, TensorFlow</span>
+          </div>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>DSP Firmware Development:</strong> Programmed ESP32 firmware in C++ featuring True RMS sampling loops triggered by hardware interrupts to extract load signatures from ZMPT101B and SCT-013 sensors.</li>
+          <li><strong>Transient Filtering & Debounce:</strong> Coded a temporal debounce filter inside the analog acquisition thread to eliminate transient noise spikes, reducing false theft alerts by 40%.</li>
+          <li><strong>Watchdog & Connectivity Loops:</strong> Built auto-reconnect WiFi recovery routines and hardware watchdog timers to achieve 99.9% uptime for Google Sheets REST logging services.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">
+              <a href="https://github.com/SaketSankhla/Arduino-JARVIS-Desk-Robot" target="_blank" class="project-link">[Embedded Control] Arduino JARVIS Desk Companion</a>
+            </span>
+            <span class="entry-subtitle">— Arduino, Embedded C, Sensors</span>
+          </div>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>Cooperative Non-Blocking Scheduler:</strong> Engineered a cooperative task scheduler in Embedded C, executing non-blocking HC-SR04 telemetry reads and I2C LCD updates without raw delays.</li>
+          <li><strong>Signal Noise Isolation:</strong> Modeled and tested RC low-pass filters on analog sensor signal lines to isolate input bounce and stabilize trigger registers.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">
+              <a href="https://github.com/SaketSankhla/Digital-VLSI-Projects" target="_blank" class="project-link">[ASIC/VLSI Design] Digital VLSI Library Blocks</a>
+            </span>
+            <span class="entry-subtitle">— Verilog, Icarus Verilog, GTKWave</span>
+          </div>
+        </div>
+        <ul class="bullet-list">
+          <li><strong>Synthesizable RTL Blocks:</strong> Modeled synthesizable Verilog modules for standard cell blocks including Full Adders, Decoders, and Multiplexers.</li>
+          <li><strong>Functional Verification:</strong> Constructed self-checking behavioral testbenches in Verilog; verified timing paths and traced logic transitions inside GTKWave.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.contact-email').forEach(el => {
+        const user = el.getAttribute('data-user');
+        const domain = el.getAttribute('data-domain');
+        if (user && domain) {
+          const email = `${user}@${domain}`;
+          el.setAttribute('href', `mailto:${email}`);
+          const text = el.querySelector('.email-text');
+          if (text) text.textContent = email;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
