@@ -2,9 +2,9 @@
    CORE VARIABLES & RESET
    ═══════════════════════════════════════════ */
 :root {
-  --bg-color: #0a0a0a;
-  --accent-color: #ff3300;
-  --accent-glow: rgba(255, 51, 0, 0.15);
+  --bg-color: #000000;
+  --accent-color: #76b900;
+  --accent-glow: rgba(118, 185, 0, 0.15);
   
   --text-primary: rgba(255, 255, 255, 0.9);
   --text-secondary: rgba(255, 255, 255, 0.6);
@@ -12,8 +12,8 @@
   
   --card-bg: rgba(255, 255, 255, 0.02);
   --card-border: rgba(255, 255, 255, 0.07);
-  --card-hover-border: rgba(255, 51, 0, 0.3);
-  --card-hover-bg: rgba(255, 51, 0, 0.02);
+  --card-hover-border: rgba(118, 185, 0, 0.3);
+  --card-hover-bg: rgba(118, 185, 0, 0.02);
   
   --font-mono: 'Space Mono', monospace;
   --font-sans: 'Inter', sans-serif;
@@ -92,7 +92,7 @@ body.hovering #cursorDot {
 body.hovering #cursorRing {
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 51, 0, 0.1);
+  background-color: rgba(118, 185, 0, 0.1);
 }
 
 /* Hide on mobile devices */
@@ -146,7 +146,7 @@ body.hovering #cursorRing {
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 51, 0, 0.15);
+  border-bottom: 1px solid rgba(118, 185, 0, 0.15);
   z-index: 900;
 }
 
@@ -346,7 +346,7 @@ body.hovering #cursorRing {
 .page-line {
   flex-grow: 1;
   height: 1px;
-  background: linear-gradient(to right, rgba(255, 51, 0, 0.25), transparent);
+  background: linear-gradient(to right, rgba(118, 185, 0, 0.25), transparent);
 }
 
 /* ═══════════════════════════════════════════
@@ -380,7 +380,7 @@ body.hovering #cursorRing {
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 51, 0, 0.08), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(118, 185, 0, 0.08), transparent);
   z-index: 1;
 }
 
@@ -676,8 +676,8 @@ body.hovering #cursorRing {
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(255, 51, 0, 0.4) 10%,
-    rgba(255, 51, 0, 0.4) 90%,
+    rgba(118, 185, 0, 0.4) 10%,
+    rgba(118, 185, 0, 0.4) 90%,
     transparent
   );
 }

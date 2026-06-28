@@ -37,7 +37,7 @@ class TextScramble {
           char = this.randomChar();
           this.queue[i].char = char;
         }
-        output += `<span style="color: #ff3300">${char}</span>`;
+        output += `<span style="color: #76b900">${char}</span>`;
       } else {
         output += from;
       }
@@ -116,7 +116,7 @@ function initThreeParticles() {
   // Particle Material
   const material = new THREE.PointsMaterial({
     size: 0.04,
-    color: 0xff3300,
+    color: 0x76b900,
     transparent: true,
     opacity: 0.65,
     sizeAttenuation: true
