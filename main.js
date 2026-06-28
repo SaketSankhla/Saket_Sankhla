@@ -417,6 +417,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initThreeParticles();
   runTerminalBoot();
   
+  // Ensure home page is active and visible on load
+  const homePage = document.getElementById('page-home');
+  if (homePage) {
+    homePage.classList.add('active');
+    setTimeout(() => homePage.classList.add('visible'), 50);
+  }
+  
   // Show welcome toast
   setTimeout(() => showToast('SYSTEM ONLINE — SAKET SANKHLA PORTFOLIO'), 800);
 });
