@@ -81,8 +81,8 @@ function initThreeParticles() {
   const canvas = document.getElementById('heroCanvas');
   if (!canvas) return;
 
-  const width = canvas.clientWidth;
-  const height = canvas.clientHeight;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
@@ -213,6 +213,13 @@ function initCustomCursor() {
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if (!dot || !ring) return;
+
+  // Disable on touch devices
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    dot.style.display = 'none';
+    ring.style.display = 'none';
+    return;
+  }
 
   let mouseX = -100, mouseY = -100;
   let dotX = -100, dotY = -100;

@@ -292,6 +292,19 @@ body.hovering #cursorRing {
   .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
   }
+  .mobile-only {
+    display: block;
+  }
+  .nav-resume-mobile {
+    color: var(--accent-color) !important;
+    border: 1px solid var(--accent-color) !important;
+    padding: 8px 20px !important;
+    text-decoration: none;
+  }
+}
+
+.mobile-only {
+  display: none;
 }
 
 /* ═══════════════════════════════════════════
@@ -969,7 +982,7 @@ body.hovering #cursorRing {
    ═══════════════════════════════════════════ */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
 }
 
