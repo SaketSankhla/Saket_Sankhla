@@ -5,435 +5,457 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saket Sankhla | Digital VLSI & Embedded Systems</title>
-  <meta name="description" content="Portfolio of Saket Sankhla, specializing in digital VLSI, RTL design, APB/AHB protocols, and autonomous embedded systems.">
+  <meta name="description" content="Portfolio of Saket Sankhla — Digital VLSI, RTL Design, AMBA Protocols, Embedded Systems. B.Tech ECE at GECA Ajmer.">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  
+  <!-- Three.js for Particle Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- CUSTOM CURSOR -->
-  <div id="customCursor">
-    <div id="customCursorDot"></div>
-    <div id="customCursorRing"></div>
-  </div>
+  <!-- Scanlines CRT Screen Overlay -->
+  <div id="scanlines"></div>
 
-  <!-- AMBIENT GLOW LIGHTING -->
-  <div class="glow-orb glow-orb-1"></div>
-  <div class="glow-orb glow-orb-2"></div>
+  <!-- Custom Cursor -->
+  <div id="cursorDot"></div>
+  <div id="cursorRing"></div>
 
-  <!-- SCROLL PROGRESS -->
+  <!-- Top Scroll Progress Bar -->
   <div id="scrollProgress"></div>
 
-  <!-- NAVIGATION / SIDEBAR -->
-  <nav id="mainNav" class="theme-dark">
-    <div class="inner">
-      <!-- Desktop Sidebar Header (Hidden on Mobile) -->
-      <div class="sidebar-header">
-        <div class="sidebar-photo-wrap">
-          <img src="assets/saket.jpg" alt="Saket Sankhla" class="sidebar-photo">
-        </div>
-        <h1 class="sidebar-title">Saket Sankhla</h1>
-        <div id="sidebarTerminal" class="sidebar-terminal"></div>
+  <!-- Toast Notification Container -->
+  <div id="toastContainer"></div>
+
+  <!-- Fixed Top Navigation Bar -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo" id="navLogo">
+        <span class="logo-dot"></span>saket.sankhla
       </div>
-
-      <!-- Mobile Logo (Hidden on Desktop) -->
-      <a href="#INIT" class="nav-logo">
-        <span class="status-dot"></span>
-        Saket Sankhla
-      </a>
-      
-      <div class="nav-right">
-        <div class="nav-toggle" id="navToggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#INIT" data-section="INIT" class="mobile-only">Home</a></li>
-          <li><a href="#SYSTEM_CORE" data-section="SYSTEM_CORE">About</a></li>
-          <li><a href="#SYSTEM_LOG" data-section="SYSTEM_LOG">Experience</a></li>
-          <li><a href="#CORE_LOGIC" data-section="CORE_LOGIC">Skills</a></li>
-          <li><a href="#CERTIFICATIONS" data-section="CERTIFICATIONS">Certifications</a></li>
-          <li><a href="#THE_LAB" data-section="THE_LAB">Projects</a></li>
-          <li><a href="#COMMS" data-section="COMMS">Contact</a></li>
-          <li><a href="resume.html" class="resume-nav-btn">Resume</a></li>
-        </ul>
-      </div>
-
-      <!-- Desktop Sidebar Footer (Hidden on Mobile) -->
-      <div class="sidebar-footer">
-        <div class="sidebar-socials">
-          <a href="https://github.com/SaketSankhla" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" class="contact-email" data-user="saketsankh18" data-domain="gmail.com"><i class="fa-solid fa-envelope"></i></a>
-        </div>
-        <div class="sidebar-copyright">
-          © 2026 Saket Sankhla
-        </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+        <li><a href="#" class="nav-link" data-page="experience">Experience</a></li>
+        <li><a href="#" class="nav-link" data-page="skills">Skills</a></li>
+        <li><a href="#" class="nav-link" data-page="projects">Projects</a></li>
+        <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+      </ul>
+      <a href="resume.html" class="nav-resume-btn" target="_blank">Resume</a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section id="INIT" class="theme-dark">
-    <div class="container">
-      <div class="hero-grid">
-        <!-- Hero Text & Bio -->
-        <div class="hero-main">
-          <div class="hero-eyebrow">
-            <span class="status-dot"></span>
-            Available for Opportunities
-          </div>
-          
-          <div class="hero-header-flex">
-            <div class="hero-photo-wrap">
-              <img src="assets/saket.jpg" alt="Saket Sankhla" class="hero-photo">
-            </div>
-            <div class="hero-title-wrap">
-              <h1 class="init-title" data-text="Saket Sankhla">Saket Sankhla</h1>
-              <div id="heroTerminal" class="hero-terminal"></div>
-            </div>
-          </div>
-
-          <div class="hero-bio">
-            <div class="bio-label">About</div>
-            <p class="bio-text">
-              B.Tech ECE Undergraduate at GECA. Designing synthesizable Verilog RTL blocks, modeling AMBA APB/AHB bus protocols, and programming low-latency embedded control firmware.
-            </p>
-          </div>
-
-          <div class="hero-actions">
-            <a href="#THE_LAB" class="btn-primary"><span>View Projects</span></a>
-            <a href="#COMMS" class="btn-secondary">Contact Me</a>
-          </div>
+  <!-- ═══════════════════════ HOME PAGE ═══════════════════════ -->
+  <section id="page-home" class="page active">
+    <!-- WebGL Canvas for Floating Particles -->
+    <canvas id="heroCanvas"></canvas>
+    <div class="col-rule left"></div>
+    <div class="col-rule right"></div>
+    
+    <div class="home-inner">
+      <div class="home-dateline">GECA AJMER &nbsp;·&nbsp; B.TECH ECE &nbsp;·&nbsp; 2022–2026</div>
+      
+      <div class="home-hero-flex">
+        <div class="home-photo-wrap">
+          <img src="assets/saket.jpg" alt="Saket Sankhla" class="home-photo">
+        </div>
+        <div class="home-text-wrap">
+          <h1 class="home-title" id="heroTitle">Saket Sankhla</h1>
+          <div class="home-terminal" id="heroTerminal"></div>
         </div>
       </div>
+
+      <div class="home-actions">
+        <a href="#" class="btn-primary" data-target-page="projects">[ VIEW PROJECTS ]</a>
+        <a href="#" class="btn-secondary" data-target-page="contact">[ CONTACT ]</a>
+      </div>
+
+      <div class="home-socials">
+        <a href="https://github.com/SaketSankhla" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="contact-email" data-user="saketsankh18" data-domain="gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <div class="scroll-hint" data-target-page="about">
+      <span>scroll</span>
+      <i class="fa-solid fa-chevron-down"></i>
     </div>
   </section>
 
-  <!-- SPECS SECTION (ABOUT) -->
-  <section id="SYSTEM_CORE" class="theme-light">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">01</span>
-        <h2 class="section-title">About</h2>
-        <div class="section-line"></div>
+  <!-- ═══════════════════════ ABOUT PAGE ═══════════════════════ -->
+  <section id="page-about" class="page">
+    <div class="page-inner">
+      <div class="page-header">
+        <span class="page-num">01</span>
+        <h2 class="page-title">About</h2>
+        <div class="page-line"></div>
       </div>
       
-      <div class="specs-single reveal">
-        <div class="about-narrative">
+      <div class="about-grid">
+        <div class="about-text">
           <p class="about-lead">
-            I am an ECE undergraduate at GECA Ajmer with a passion for digital VLSI, RTL design, and embedded systems. My engineering approach is driven by a <strong>project-first implementation</strong> philosophy, focusing on building practical systems from the ground up.
+            I am an ECE undergraduate at GECA Ajmer with a focus on digital VLSI, RTL design, and embedded systems. My approach is driven by a <strong>project-first implementation</strong> philosophy — building practical systems from the ground up.
           </p>
           <p class="about-body">
             I specialize in designing synthesizable Verilog RTL blocks, integrating AMBA APB/AHB bus protocols, and programming low-latency control firmware on microcontrollers.
           </p>
+          <p class="about-body">
+            My primary roadmap is targeted towards GATE 2027 with a target score of 720–750 to pursue an M.Tech in VLSI at IIT Bombay. Currently, I am actively building my expertise through hands-on design and verification projects, and researching hardware architecture.
+          </p>
+        </div>
+        
+        <div class="spec-sheet">
+          <div class="spec-row">
+            <span class="spec-key">NAME</span>
+            <span class="spec-val">Saket Sankhla</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">ROLE</span>
+            <span class="spec-val">B.Tech ECE (6th Sem)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">INSTITUTE</span>
+            <span class="spec-val">GECA Ajmer, RTU Bikaner</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">LOCATION</span>
+            <span class="spec-val">Jodhpur, Rajasthan, India</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">FOCUS</span>
+            <span class="spec-val">Digital VLSI / RTL Design</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">TARGET</span>
+            <span class="spec-val">GATE 2027 → IIT Bombay</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">STATUS</span>
+            <span class="spec-val spec-active"><span class="status-dot"></span> Open to Opportunities</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SYSTEM LOG (EXPERIENCE) -->
-  <section id="SYSTEM_LOG" class="theme-dark">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">02</span>
-        <h2 class="section-title">Experience</h2>
-        <div class="section-line"></div>
+  <!-- ═══════════════════════ EXPERIENCE PAGE ═══════════════════════ -->
+  <section id="page-experience" class="page">
+    <div class="page-inner">
+      <div class="page-header">
+        <span class="page-num">02</span>
+        <h2 class="page-title">Experience</h2>
+        <div class="page-line"></div>
       </div>
       
       <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="tl-node"></div>
-          <div class="tl-date">May 2026 — Present</div>
-          <div class="tl-title">Summer Intern</div>
-          <div class="tl-org"><i class="fa-solid fa-shield-halved"></i> Defence Research and Development Laboratory (DRDL) - DRDO // JODHPUR</div>
-          <div class="tl-desc">Analyzing avionics control electronics, RF modules, and high-reliability defense communication buses.</div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="tl-node"></div>
-          <div class="tl-date">2026</div>
-          <div class="tl-title">Electronics Lead (Drone Hackathon)</div>
-          <div class="tl-org"><i class="fa-solid fa-graduation-cap"></i> IIT ROORKEE</div>
-          <div class="tl-desc">
-            Designed noise-isolated power distribution grids and sensor feedback loops for autonomous drone flight nodes.
-            <br><a href="#" onclick="openLightbox('certifications/iitRoorkeeHackathonCertificate.jpg', 'IIT Roorkee - Drone Hackathon Electronics Lead Certificate'); return false;" class="inline-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
+        <!-- Item 1: DRDO -->
+        <div class="tl-item">
+          <div class="tl-marker"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="tl-content">
+            <div class="tl-date">May 2026 — Present</div>
+            <h3 class="tl-title">Summer Intern</h3>
+            <div class="tl-org">Defence Research and Development Laboratory (DRDL) — DRDO · Jodhpur</div>
+            <p class="tl-desc">
+              Designing a parameterized FPGA-based lift controller in Verilog HDL using the LOOK scheduling FSM on Xilinx Basys 3. Analyzing avionics control electronics, RF modules, and high-reliability defense communication buses.
+            </p>
           </div>
         </div>
 
-        <div class="timeline-item reveal">
-          <div class="tl-node"></div>
-          <div class="tl-date">July 2025 — August 2025</div>
-          <div class="tl-title">VLSI Design Intern</div>
-          <div class="tl-org"><i class="fa-solid fa-microchip"></i> MAVEN SILICON // BENGALURU</div>
-          <div class="tl-desc">
-            Engineered a synthesizable APB-to-AHB AMBA bus bridge in SystemVerilog; verified logic routing and resolved clock domain timing errors.
-            <br><a href="#" onclick="openLightbox('certifications/vlsiDesignInternshipCertificate.jpg', 'Maven Silicon - VLSI Design Internship Certificate'); return false;" class="inline-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
+        <!-- Item 2: IIT Roorkee -->
+        <div class="tl-item">
+          <div class="tl-marker"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="tl-content">
+            <div class="tl-date">2026</div>
+            <h3 class="tl-title">Electronics Lead — Drone Hackathon</h3>
+            <div class="tl-org">IIT Roorkee</div>
+            <p class="tl-desc">
+              Designed noise-isolated power distribution grids and sensor feedback loops for autonomous drone flight nodes.
+            </p>
+            <a href="#" onclick="openLightbox('certifications/iitRoorkeeHackathonCertificate.jpg','IIT Roorkee Drone Hackathon Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
           </div>
         </div>
 
-        <div class="timeline-item reveal">
-          <div class="tl-node"></div>
-          <div class="tl-date">June 2024</div>
-          <div class="tl-title">Telecom Trainee</div>
-          <div class="tl-org"><i class="fa-solid fa-tower-broadcast"></i> Bharat Sanchar Nigam Limited (BSNL) // JODHPUR</div>
-          <div class="tl-desc">
-            Studied GSM routing configurations and physical optical fiber transport loops at the central exchange.
-            <br><a href="#" onclick="openLightbox('certifications/bsnlInternshipCertificate.jpg', 'BSNL - Telecom Trainee Internship Certificate'); return false;" class="inline-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
+        <!-- Item 3: Maven Silicon -->
+        <div class="tl-item">
+          <div class="tl-marker"><i class="fa-solid fa-microchip"></i></div>
+          <div class="tl-content">
+            <div class="tl-date">July 2025 — August 2025</div>
+            <h3 class="tl-title">VLSI Design Intern</h3>
+            <div class="tl-org">Maven Silicon · Bengaluru</div>
+            <p class="tl-desc">
+              Engineered a synthesizable APB-to-AHB AMBA bus bridge in SystemVerilog; verified logic routing and resolved clock domain timing errors.
+            </p>
+            <a href="#" onclick="openLightbox('certifications/vlsiDesignInternshipCertificate.jpg','Maven Silicon VLSI Design Internship Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
+          </div>
+        </div>
+
+        <!-- Item 4: BSNL -->
+        <div class="tl-item">
+          <div class="tl-marker"><i class="fa-solid fa-tower-broadcast"></i></div>
+          <div class="tl-content">
+            <div class="tl-date">June 2024</div>
+            <h3 class="tl-title">Telecom Trainee</h3>
+            <div class="tl-org">Bharat Sanchar Nigam Limited (BSNL) · Jodhpur</div>
+            <p class="tl-desc">
+              Studied GSM routing configurations and physical optical fiber transport loops at the central exchange.
+            </p>
+            <a href="#" onclick="openLightbox('certifications/bsnlInternshipCertificate.jpg','BSNL Telecom Trainee Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS SECTION (REGISTER MAP) -->
-  <section id="CORE_LOGIC" class="theme-light">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">03</span>
-        <h2 class="section-title">Skills</h2>
-        <div class="section-line"></div>
+  <!-- ═══════════════════════ SKILLS PAGE ═══════════════════════ -->
+  <section id="page-skills" class="page">
+    <div class="page-inner">
+      <div class="page-header">
+        <span class="page-num">03</span>
+        <h2 class="page-title">Skills</h2>
+        <div class="page-line"></div>
       </div>
-
-      <div class="reg-map stagger" id="skillsGrid">
-        <div class="reg-map-header">
-          <span class="reg-col reg-addr">#</span>
-          <span class="reg-col reg-name-col">Area</span>
-          <span class="reg-col reg-tags-col">Technologies</span>
+      
+      <div class="reg-map">
+        <div class="reg-header">
+          <span class="reg-num">#</span>
+          <span class="reg-area">Area</span>
+          <span class="reg-tags-head">Technologies</span>
         </div>
+        
         <div class="reg-row">
-          <span class="reg-col reg-addr">01</span>
-          <span class="reg-col reg-name-col">RTL &amp; VLSI Logic</span>
-          <span class="reg-col reg-tags-col">
+          <span class="reg-num">0x01</span>
+          <span class="reg-area">RTL &amp; VLSI Logic</span>
+          <span class="reg-tags">
             <span class="skill-tag"><i class="fa-solid fa-microchip"></i> Verilog</span>
             <span class="skill-tag"><i class="fa-solid fa-microchip"></i> SystemVerilog</span>
             <span class="skill-tag"><i class="fa-solid fa-microchip"></i> VHDL</span>
-            <span class="skill-tag"><i class="fa-solid fa-network-wired"></i> APB / AHB Protocols</span>
-            <span class="skill-tag"><i class="fa-solid fa-diagram-project"></i> Digital Circuit Design</span>
+            <span class="skill-tag"><i class="fa-solid fa-network-wired"></i> APB / AHB</span>
+            <span class="skill-tag"><i class="fa-solid fa-diagram-project"></i> Digital Design</span>
             <span class="skill-tag"><i class="fa-solid fa-gears"></i> Logic Synthesis</span>
           </span>
         </div>
+        
         <div class="reg-row">
-          <span class="reg-col reg-addr">02</span>
-          <span class="reg-col reg-name-col">Verification &amp; Tools</span>
-          <span class="reg-col reg-tags-col">
+          <span class="reg-num">0x02</span>
+          <span class="reg-area">Verification &amp; Tools</span>
+          <span class="reg-tags">
             <span class="skill-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Xilinx Vivado</span>
             <span class="skill-tag"><i class="fa-solid fa-microchip"></i> Icarus Verilog</span>
             <span class="skill-tag"><i class="fa-solid fa-wave-square"></i> GTKWave</span>
             <span class="skill-tag"><i class="fa-solid fa-compass-drafting"></i> Altium Designer</span>
           </span>
         </div>
+        
         <div class="reg-row">
-          <span class="reg-col reg-addr">03</span>
-          <span class="reg-col reg-name-col">Embedded Hardware</span>
-          <span class="reg-col reg-tags-col">
+          <span class="reg-num">0x03</span>
+          <span class="reg-area">Embedded Hardware</span>
+          <span class="reg-tags">
             <span class="skill-tag"><i class="fa-solid fa-microchip"></i> ESP32</span>
-            <span class="skill-tag clickable-tag" onclick="openLightbox('certifications/arduinoCerticate.jpg', 'Arduino Robotics & Embedded Systems Certificate')"><i class="devicon-arduino-plain"></i> Arduino UNO <i class="fa-solid fa-image cert-icon-tag"></i></span>
+            <span class="skill-tag"><i class="fa-solid fa-robot"></i> Arduino UNO</span>
             <span class="skill-tag"><i class="fa-solid fa-circle-nodes"></i> PCB Layout</span>
             <span class="skill-tag"><i class="fa-solid fa-bolt"></i> Sensor Integration</span>
           </span>
         </div>
+        
         <div class="reg-row">
-          <span class="reg-col reg-addr">04</span>
-          <span class="reg-col reg-name-col">Programming</span>
-          <span class="reg-col reg-tags-col">
-            <span class="skill-tag"><i class="devicon-cplusplus-plain"></i> C / C++</span>
-            <span class="skill-tag"><i class="devicon-python-plain"></i> Python</span>
-            <span class="skill-tag clickable-tag" onclick="openLightbox('certifications/matlabCertificate.jpg', 'MATLAB Coding & Signal Processing Certificate')"><i class="fa-solid fa-square-poll-vertical"></i> MATLAB <i class="fa-solid fa-image cert-icon-tag"></i></span>
-            <span class="skill-tag"><i class="devicon-html5-plain"></i> HTML5 / CSS3</span>
-            <span class="skill-tag"><i class="devicon-javascript-plain"></i> JavaScript</span>
+          <span class="reg-num">0x04</span>
+          <span class="reg-area">Programming</span>
+          <span class="reg-tags">
+            <span class="skill-tag"><i class="fa-solid fa-code"></i> C / C++</span>
+            <span class="skill-tag"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="skill-tag"><i class="fa-solid fa-square-poll-vertical"></i> MATLAB</span>
+            <span class="skill-tag"><i class="fa-brands fa-html5"></i> HTML5 / CSS3</span>
+            <span class="skill-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
           </span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- CERTIFICATIONS SECTION -->
-  <section id="CERTIFICATIONS" class="theme-dark">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">04</span>
-        <h2 class="section-title">Certifications</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="certs-grid stagger">
-        <!-- Cert 1: Maven Silicon VLSI Design -->
-        <div class="cert-card" onclick="openLightbox('certifications/vlsiDesignInternshipCertificate.jpg', 'Maven Silicon - VLSI Design Internship Certificate')">
-          <div class="cert-img-wrap">
-            <img src="certifications/vlsiDesignInternshipCertificate.jpg" alt="Maven Silicon VLSI Internship" class="cert-thumbnail">
-            <div class="cert-overlay">
-              <span class="view-btn"><i class="fa-solid fa-maximize"></i> Expand</span>
+      <!-- Certifications Subsection -->
+      <div class="certs-subsection">
+        <div class="subsec-label">// SKILL &amp; INTERNSHIP CERTIFICATIONS</div>
+        <div class="certs-grid">
+          <!-- Cert 1 -->
+          <div class="cert-card" onclick="openLightbox('certifications/vlsiDesignInternshipCertificate.jpg','Maven Silicon VLSI Design Internship Certificate')">
+            <div class="cert-img-wrap">
+              <img src="certifications/vlsiDesignInternshipCertificate.jpg" alt="Maven Silicon" class="cert-thumb">
+              <div class="cert-overlay"><i class="fa-solid fa-maximize"></i></div>
+            </div>
+            <div class="cert-info">
+              <div class="cert-badge">Internship</div>
+              <h4 class="cert-name">VLSI Design Internship</h4>
+              <p class="cert-issuer">Maven Silicon</p>
             </div>
           </div>
-          <div class="cert-info">
-            <div class="cert-badge">Internship</div>
-            <h3 class="cert-name">VLSI Design Internship</h3>
-            <p class="cert-issuer">Maven Silicon</p>
-          </div>
-        </div>
-
-        <!-- Cert 2: BSNL Internship -->
-        <div class="cert-card" onclick="openLightbox('certifications/bsnlInternshipCertificate.jpg', 'BSNL - Telecom Trainee Internship Certificate')">
-          <div class="cert-img-wrap">
-            <img src="certifications/bsnlInternshipCertificate.jpg" alt="BSNL Internship" class="cert-thumbnail">
-            <div class="cert-overlay">
-              <span class="view-btn"><i class="fa-solid fa-maximize"></i> Expand</span>
+          <!-- Cert 2 -->
+          <div class="cert-card" onclick="openLightbox('certifications/bsnlInternshipCertificate.jpg','BSNL Telecom Trainee Certificate')">
+            <div class="cert-img-wrap">
+              <img src="certifications/bsnlInternshipCertificate.jpg" alt="BSNL" class="cert-thumb">
+              <div class="cert-overlay"><i class="fa-solid fa-maximize"></i></div>
+            </div>
+            <div class="cert-info">
+              <div class="cert-badge">Internship</div>
+              <h4 class="cert-name">Telecom Trainee</h4>
+              <p class="cert-issuer">BSNL Jodhpur</p>
             </div>
           </div>
-          <div class="cert-info">
-            <div class="cert-badge">Internship</div>
-            <h3 class="cert-name">Telecom Trainee</h3>
-            <p class="cert-issuer">BSNL Jodhpur</p>
-          </div>
-        </div>
-
-        <!-- Cert 3: IIT Roorkee Hackathon -->
-        <div class="cert-card" onclick="openLightbox('certifications/iitRoorkeeHackathonCertificate.jpg', 'IIT Roorkee - Drone Hackathon Electronics Lead Certificate')">
-          <div class="cert-img-wrap">
-            <img src="certifications/iitRoorkeeHackathonCertificate.jpg" alt="IIT Roorkee Drone Hackathon" class="cert-thumbnail">
-            <div class="cert-overlay">
-              <span class="view-btn"><i class="fa-solid fa-maximize"></i> Expand</span>
+          <!-- Cert 3 -->
+          <div class="cert-card" onclick="openLightbox('certifications/iitRoorkeeHackathonCertificate.jpg','IIT Roorkee Drone Hackathon Certificate')">
+            <div class="cert-img-wrap">
+              <img src="certifications/iitRoorkeeHackathonCertificate.jpg" alt="IIT Roorkee" class="cert-thumb">
+              <div class="cert-overlay"><i class="fa-solid fa-maximize"></i></div>
+            </div>
+            <div class="cert-info">
+              <div class="cert-badge">Competition</div>
+              <h4 class="cert-name">Drone Hackathon Lead</h4>
+              <p class="cert-issuer">IIT Roorkee</p>
             </div>
           </div>
-          <div class="cert-info">
-            <div class="cert-badge">Competition</div>
-            <h3 class="cert-name">Electronics Lead (Drone Hackathon)</h3>
-            <p class="cert-issuer">IIT Roorkee</p>
-          </div>
-        </div>
-
-        <!-- Cert 4: IIT Bombay Hackathon -->
-        <div class="cert-card" onclick="openLightbox('certifications/iitbombayHackathonCertificate.jpg', 'IIT Bombay - Hackathon Certificate of Participation')">
-          <div class="cert-img-wrap">
-            <img src="certifications/iitbombayHackathonCertificate.jpg" alt="IIT Bombay Hackathon" class="cert-thumbnail">
-            <div class="cert-overlay">
-              <span class="view-btn"><i class="fa-solid fa-maximize"></i> Expand</span>
+          <!-- Cert 4 -->
+          <div class="cert-card" onclick="openLightbox('certifications/iitbombayHackathonCertificate.jpg','IIT Bombay Hackathon Certificate')">
+            <div class="cert-img-wrap">
+              <img src="certifications/iitbombayHackathonCertificate.jpg" alt="IIT Bombay" class="cert-thumb">
+              <div class="cert-overlay"><i class="fa-solid fa-maximize"></i></div>
+            </div>
+            <div class="cert-info">
+              <div class="cert-badge">Competition</div>
+              <h4 class="cert-name">Hackathon Participant</h4>
+              <p class="cert-issuer">IIT Bombay</p>
             </div>
           </div>
-          <div class="cert-info">
-            <div class="cert-badge">Competition</div>
-            <h3 class="cert-name">Hackathon Participant</h3>
-            <p class="cert-issuer">IIT Bombay</p>
-          </div>
-        </div>
-
-        <!-- Cert 5: Arduino Certificate -->
-        <div class="cert-card" onclick="openLightbox('certifications/arduinoCerticate.jpg', 'Arduino Robotics & Embedded Systems Certificate')">
-          <div class="cert-img-wrap">
-            <img src="certifications/arduinoCerticate.jpg" alt="Arduino Skill Certificate" class="cert-thumbnail">
-            <div class="cert-overlay">
-              <span class="view-btn"><i class="fa-solid fa-maximize"></i> Expand</span>
+          <!-- Cert 5 -->
+          <div class="cert-card" onclick="openLightbox('certifications/arduinoCerticate.jpg','Arduino Robotics Certificate')">
+            <div class="cert-img-wrap">
+              <img src="certifications/arduinoCerticate.jpg" alt="Arduino" class="cert-thumb">
+              <div class="cert-overlay"><i class="fa-solid fa-maximize"></i></div>
+            </div>
+            <div class="cert-info">
+              <div class="cert-badge">Skill</div>
+              <h4 class="cert-name">Arduino Robotics</h4>
+              <p class="cert-issuer">Autodesk / Coursera</p>
             </div>
           </div>
-          <div class="cert-info">
-            <div class="cert-badge">Skill Certification</div>
-            <h3 class="cert-name">Arduino Robotics</h3>
-            <p class="cert-issuer">Autodesk / Coursera / Academy</p>
-          </div>
-        </div>
-
-        <!-- Cert 6: MATLAB Certificate -->
-        <div class="cert-card" onclick="openLightbox('certifications/matlabCertificate.jpg', 'MATLAB Coding & Signal Processing Certificate')">
-          <div class="cert-img-wrap">
-            <img src="certifications/matlabCertificate.jpg" alt="MATLAB Skill Certificate" class="cert-thumbnail">
-            <div class="cert-overlay">
-              <span class="view-btn"><i class="fa-solid fa-maximize"></i> Expand</span>
+          <!-- Cert 6 -->
+          <div class="cert-card" onclick="openLightbox('certifications/matlabCertificate.jpg','MATLAB Fundamentals Certificate')">
+            <div class="cert-img-wrap">
+              <img src="certifications/matlabCertificate.jpg" alt="MATLAB" class="cert-thumb">
+              <div class="cert-overlay"><i class="fa-solid fa-maximize"></i></div>
             </div>
-          </div>
-          <div class="cert-info">
-            <div class="cert-badge">Skill Certification</div>
-            <h3 class="cert-name">MATLAB Fundamentals</h3>
-            <p class="cert-issuer">MathWorks</p>
+            <div class="cert-info">
+              <div class="cert-badge">Skill</div>
+              <h4 class="cert-name">MATLAB Fundamentals</h4>
+              <p class="cert-issuer">MathWorks</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- THE LAB (PROJECTS) -->
-  <section id="THE_LAB" class="theme-light">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">05</span>
-        <h2 class="section-title">Projects</h2>
-        <div class="section-line"></div>
+  <!-- ═══════════════════════ PROJECTS PAGE ═══════════════════════ -->
+  <section id="page-projects" class="page">
+    <div class="page-inner">
+      <div class="page-header">
+        <span class="page-num">04</span>
+        <h2 class="page-title">Projects</h2>
+        <div class="page-line"></div>
       </div>
-
-      <!-- PROJECTS GRID (Uniform layout) -->
-      <div class="projects-grid stagger">
-        <!-- Project 1: APB-to-AHB Bridge -->
+      
+      <div class="projects-grid">
+        <!-- Project 1 -->
         <div class="project-card">
-          <div class="project-header">
-            <div class="project-id">VLSI DESIGN</div>
-            <div class="project-status"><span class="status-dot green"></span> COMPLETED</div>
+          <div class="project-top">
+            <span class="project-cat">VLSI DESIGN</span>
+            <span class="project-status"><span class="status-dot green"></span> COMPLETED</span>
           </div>
           <h3 class="project-name">APB-to-AHB Bridge</h3>
-          <p class="project-desc">Synthesizable AMBA APB-to-AHB bus protocol bridge modeled in SystemVerilog. Performs multi-cycle data transactions and timing verification using Vivado.</p>
-          <div class="project-tech">
-            <span class="tech-badge">SystemVerilog</span>
-            <span class="tech-badge">RTL Design</span>
-            <span class="tech-badge">Xilinx Vivado</span>
-            <span class="tech-badge">APB / AHB Protocols</span>
+          <p class="project-desc">Synthesizable AMBA APB-to-AHB bus protocol bridge in SystemVerilog. Multi-cycle data transactions with timing verification using Vivado.</p>
+          <div class="project-tags">
+            <span class="tech-tag">SystemVerilog</span>
+            <span class="tech-tag">RTL Design</span>
+            <span class="tech-tag">Xilinx Vivado</span>
+            <span class="tech-tag">APB / AHB</span>
           </div>
           <a href="https://github.com/SaketSankhla/APB-to-AHB-Bridge" class="project-link" target="_blank" rel="noopener">View Repository &rarr;</a>
         </div>
 
-        <!-- Project 2: Electricity Theft Detector -->
+        <!-- Project 2 -->
         <div class="project-card">
-          <div class="project-header">
-            <div class="project-id">EMBEDDED &amp; IOT</div>
-            <div class="project-status"><span class="status-dot green"></span> COMPLETED</div>
+          <div class="project-top">
+            <span class="project-cat">FPGA / RTL</span>
+            <span class="project-status"><span class="status-dot green"></span> COMPLETED</span>
+          </div>
+          <h3 class="project-name">Lift Controller (DRDO)</h3>
+          <p class="project-desc">Parameterized N-floor MRL traction elevator controller in Verilog HDL. LOOK scheduling FSM on Xilinx Basys 3 with safety interlocks and dwell timer.</p>
+          <div class="project-tags">
+            <span class="tech-tag">Verilog</span>
+            <span class="tech-tag">FSM</span>
+            <span class="tech-tag">Xilinx Basys 3</span>
+            <span class="tech-tag">LOOK Algorithm</span>
+          </div>
+          <a href="https://github.com/SaketSankhla/lift_controller" class="project-link" target="_blank" rel="noopener">View Repository &rarr;</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-top">
+            <span class="project-cat">EMBEDDED &amp; IOT</span>
+            <span class="project-status"><span class="status-dot green"></span> COMPLETED</span>
           </div>
           <h3 class="project-name">Electricity Theft Detector</h3>
-          <p class="project-desc">Smart energy meter using ESP32 for True RMS measurements and debounce anomaly filtering, integrated with a CNN-LSTM deep learning theft classifier.</p>
-          <div class="project-tech">
-            <span class="tech-badge">ESP32 (C++)</span>
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">TensorFlow</span>
-            <span class="tech-badge">Google Sheets API</span>
+          <p class="project-desc">Smart energy meter using ESP32 for True RMS measurements with CNN-LSTM deep learning theft classifier.</p>
+          <div class="project-tags">
+            <span class="tech-tag">ESP32 C++</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">Google Sheets API</span>
           </div>
           <a href="https://github.com/SaketSankhla/smart_energy_meter" class="project-link" target="_blank" rel="noopener">View Repository &rarr;</a>
         </div>
 
-        <!-- Project 3: JARVIS Desk Companion -->
+        <!-- Project 4 -->
         <div class="project-card">
-          <div class="project-header">
-            <div class="project-id">ROBOTICS</div>
-            <div class="project-status"><span class="status-dot green"></span> COMPLETED</div>
+          <div class="project-top">
+            <span class="project-cat">ROBOTICS</span>
+            <span class="project-status"><span class="status-dot green"></span> COMPLETED</span>
           </div>
           <h3 class="project-name">JARVIS Desk Companion</h3>
-          <p class="project-desc">Autonomous robotics companion built with a cooperative scheduler in Embedded C, interfacing sonar tracking and environmental telemetry loops.</p>
-          <div class="project-tech">
-            <span class="tech-badge">Arduino UNO</span>
-            <span class="tech-badge">HC-SR04</span>
-            <span class="tech-badge">I2C LCD</span>
-            <span class="tech-badge">Embedded C</span>
+          <p class="project-desc">Autonomous desk robot with cooperative scheduler in Embedded C, interfacing sonar tracking, environmental telemetry, and LCD display.</p>
+          <div class="project-tags">
+            <span class="tech-tag">Arduino UNO</span>
+            <span class="tech-tag">HC-SR04</span>
+            <span class="tech-tag">I2C LCD</span>
+            <span class="tech-tag">Embedded C</span>
           </div>
           <a href="https://github.com/SaketSankhla/Arduino-JARVIS-Desk-Robot" class="project-link" target="_blank" rel="noopener">View Repository &rarr;</a>
         </div>
 
-        <!-- Project 4: Digital Circuit Blocks -->
+        <!-- Project 5 -->
         <div class="project-card">
-          <div class="project-header">
-            <div class="project-id">DIGITAL CIRCUITS</div>
-            <div class="project-status"><span class="status-dot green"></span> VERIFIED</div>
+          <div class="project-top">
+            <span class="project-cat">DIGITAL CIRCUITS</span>
+            <span class="project-status"><span class="status-dot blue"></span> VERIFIED</span>
           </div>
           <h3 class="project-name">Digital Circuit Blocks</h3>
-          <p class="project-desc">Library of synthesizable RTL blocks (4-bit adders, decoders, multiplexers) in Verilog verified using Icarus Verilog simulation and GTKWave.</p>
-          <div class="project-tech">
-            <span class="tech-badge">Verilog</span>
-            <span class="tech-badge">Icarus Verilog</span>
-            <span class="tech-badge">GTKWave</span>
+          <p class="project-desc">Library of synthesizable RTL blocks in Verilog — 4-bit adders, decoders, multiplexers — verified using Icarus Verilog and GTKWave.</p>
+          <div class="project-tags">
+            <span class="tech-tag">Verilog</span>
+            <span class="tech-tag">Icarus Verilog</span>
+            <span class="tech-tag">GTKWave</span>
           </div>
           <a href="https://github.com/SaketSankhla/Digital-VLSI-Projects" class="project-link" target="_blank" rel="noopener">View Repository &rarr;</a>
         </div>
@@ -441,55 +463,52 @@
     </div>
   </section>
 
-  <!-- COMMS (CONTACT) -->
-  <section id="COMMS" class="theme-dark">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-num">06</span>
-        <h2 class="section-title">Contact</h2>
-        <div class="section-line"></div>
+  <!-- ═══════════════════════ CONTACT PAGE ═══════════════════════ -->
+  <section id="page-contact" class="page">
+    <div class="page-inner contact-inner">
+      <div class="page-header">
+        <span class="page-num">05</span>
+        <h2 class="page-title">Contact</h2>
+        <div class="page-line"></div>
       </div>
       
-      <div class="links-grid stagger">
-        <a href="https://github.com/SaketSankhla" class="link-card" target="_blank" rel="noopener">
-          <span class="link-icon"><i class="fa-brands fa-github"></i></span>
-          <span class="link-name">GitHub</span>
-          <span class="link-handle">@SaketSankhla</span>
+      <p class="contact-sub">Available for internships, research collaborations, and VLSI project discussions.</p>
+      
+      <div class="contact-grid">
+        <a href="https://github.com/SaketSankhla" class="contact-card" target="_blank" rel="noopener">
+          <span class="contact-icon"><i class="fa-brands fa-github"></i></span>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-handle">@SaketSankhla</span>
         </a>
-        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" class="link-card" target="_blank" rel="noopener">
-          <span class="link-icon"><i class="fa-brands fa-linkedin"></i></span>
-          <span class="link-name">LinkedIn</span>
-          <span class="link-handle">Saket Sankhla</span>
+        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" class="contact-card" target="_blank" rel="noopener">
+          <span class="contact-icon"><i class="fa-brands fa-linkedin"></i></span>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-handle">Saket Sankhla</span>
         </a>
-        <a href="#" class="link-card contact-email" data-user="saketsankh18" data-domain="gmail.com">
-          <span class="link-icon"><i class="fa-solid fa-envelope"></i></span>
-          <span class="link-name">Email</span>
-          <span class="link-handle">loading...</span>
+        <a href="#" class="contact-card contact-email" data-user="saketsankh18" data-domain="gmail.com">
+          <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+          <span class="contact-label">Email</span>
+          <span class="contact-handle link-handle">loading...</span>
         </a>
+      </div>
+      
+      <div class="contact-footer">
+        <span>&copy; 2026 Saket Sankhla</span>
+        <span class="contact-footer-sep">·</span>
+        <span>Built with HTML / CSS / JS</span>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-copyright">
-        &copy; 2026 Saket Sankhla
-      </div>
-    </div>
-  </footer>
-
-  <!-- LIGHTBOX LIGHT-WEIGHT MODAL -->
+  <!-- LIGHTBOX -->
   <div id="certLightbox" class="lightbox" onclick="closeLightbox()">
     <span class="lightbox-close">&times;</span>
-    <div class="lightbox-content-wrap" onclick="event.stopPropagation()">
-      <img id="lightboxImg" class="lightbox-img" src="" alt="Certificate View">
-      <div id="lightboxCaption" class="lightbox-caption"></div>
+    <div class="lightbox-wrap" onclick="event.stopPropagation()">
+      <img id="lightboxImg" src="" alt="Certificate">
+      <div id="lightboxCaption" class="lightbox-cap"></div>
     </div>
   </div>
 
-  <!-- SEQUENTIAL CLASSIC SCRIPT LOADING FOR LOCAL file:// COMPATIBILITY -->
   <script src="main.js"></script>
 </body>
-
 </html>
