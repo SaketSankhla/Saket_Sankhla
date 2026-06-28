@@ -15,7 +15,7 @@
   --card-hover-border: rgba(118, 185, 0, 0.3);
   --card-hover-bg: rgba(118, 185, 0, 0.02);
   
-  --font-mono: 'Space Mono', monospace;
+  --font-mono: 'Silkscreen', 'Space Mono', monospace;
   --font-sans: 'Inter', sans-serif;
   
   --transition-speed: 0.3s;
@@ -1276,4 +1276,87 @@ body.hovering #cursorRing {
 @keyframes slideIn {
   from { transform: translateX(120%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════
+   MINECRAFT PIXEL RETRO OVERRIDES
+   ═══════════════════════════════════════════ */
+*, *::before, *::after {
+  border-radius: 0 !important; /* Force blocky pixel corners globally */
+}
+
+/* Blocky/Pixelated 3D Shadows for Cards, Buttons, and Sheets */
+.project-card, .cert-card, .spec-sheet, .contact-card, .nav-resume-btn, .btn-primary, .btn-secondary, .tl-content, .toast {
+  box-shadow: 3px 3px 0px rgba(118, 185, 0, 0.15) !important;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed) !important;
+}
+
+.project-card:hover, .cert-card:hover, .contact-card:hover, .tl-content:hover {
+  box-shadow: 5px 5px 0px var(--accent-color) !important;
+  transform: translate(-2px, -2px) !important;
+  border-color: var(--accent-color) !important;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .nav-resume-btn:hover {
+  box-shadow: 4px 4px 0px rgba(255, 255, 255, 0.8) !important;
+  transform: translate(-1px, -1px) !important;
+}
+
+/* Custom Cursors - Blocky Squares */
+#cursorDot {
+  border-radius: 0 !important;
+  width: 5px;
+  height: 5px;
+}
+
+#cursorRing {
+  border-radius: 0 !important;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--accent-color);
+}
+
+body.hovering #cursorDot {
+  width: 8px;
+  height: 8px;
+}
+
+body.hovering #cursorRing {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(118, 185, 0, 0.15);
+}
+
+/* Square Status Indicators */
+.status-dot, .logo-dot, .tl-marker {
+  border-radius: 0 !important;
+}
+
+.tl-marker {
+  font-size: 0.6rem;
+}
+
+/* Photo Frames - Blocky Retro Shadow */
+.home-photo-wrap {
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0px var(--accent-glow) !important;
+}
+
+.home-photo {
+  border-radius: 0 !important;
+}
+
+/* Register Map Rows */
+.reg-row {
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.05);
+}
+
+/* Pixel tag borders */
+.skill-tag, .tech-tag {
+  border: 1px solid var(--accent-color);
+  background: rgba(118, 185, 0, 0.03);
+}
+
+.toast {
+  border: 2px solid var(--accent-color) !important;
 }
