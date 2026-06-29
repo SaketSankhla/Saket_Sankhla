@@ -28,6 +28,11 @@
   border-radius: 0 !important; /* Strictly blocky corners */
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Offset for fixed header during scrolling */
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
@@ -134,7 +139,7 @@ body.hovering #cursorRing {
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -144,7 +149,7 @@ body.hovering #cursorRing {
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -159,6 +164,7 @@ body.hovering #cursorRing {
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  user-select: none;
 }
 
 .logo-dot {
@@ -211,40 +217,53 @@ body.hovering #cursorRing {
   border-color: var(--accent-color);
 }
 
+/* Optimization: Expanded Touch Target Size for Hamburger Menu on Phones */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 6px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
   cursor: pointer;
+  z-index: 1001; /* Above mobile drawer link overlay */
 }
 
 .hamburger span {
   width: 20px;
   height: 1px;
   background-color: var(--text-primary);
-  transition: transform var(--transition-speed), opacity var(--transition-speed);
+  transition: transform var(--transition-speed), opacity var(--transition-speed), width var(--transition-speed);
+}
+
+.hamburger span:nth-child(2) {
+  width: 14px;
 }
 
 @media (max-width: 900px) {
   .nav-links {
     position: fixed;
-    top: 65px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 65px);
-    background: var(--bg-color);
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgba(5, 5, 5, 0.98);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 40px;
-    transform: translateY(-100%);
+    padding: 60px 40px;
+    gap: 32px;
+    transform: translateX(100%);
     opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    z-index: 899;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    z-index: 999;
   }
   
   .nav-links.mobile-open {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
   }
   
@@ -257,26 +276,31 @@ body.hovering #cursorRing {
   }
   
   .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(4px, 4px);
+    width: 20px;
   }
   
   .hamburger.active span:nth-child(2) {
     opacity: 0;
+    width: 0;
   }
   
   .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(4px, -4px);
+    width: 20px;
   }
   
   .mobile-only {
     display: block;
+    margin-top: 10px;
   }
   
   .nav-resume-mobile {
     color: var(--accent-color) !important;
     border: 1px solid var(--accent-color) !important;
-    padding: 8px 20px !important;
+    padding: 10px 24px !important;
     text-decoration: none;
+    display: inline-block;
   }
 }
 
@@ -285,27 +309,14 @@ body.hovering #cursorRing {
 }
 
 /* ═══════════════════════════════════════════
-   PAGE ARCHITECTURE (SPA)
+   STREAMLINED SECTION LAYOUT (Single Page)
    ═══════════════════════════════════════════ */
-.page {
-  display: none;
-  min-height: 100vh;
-  padding-top: 100px;
-  padding-bottom: 80px;
+.sec-page {
+  width: 100%;
+  padding: 120px 0 80px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   position: relative;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
   z-index: 2;
-}
-
-.page.active {
-  display: block;
-}
-
-.page.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .page-inner {
@@ -340,21 +351,29 @@ body.hovering #cursorRing {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ═══════════════════════════════════════════
-   HOME PAGE & NOTHING RETRO LOWER PORTION
-   ═══════════════════════════════════════════ */
-#page-home {
-  padding-top: 0;
-  padding-bottom: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+@media (max-width: 768px) {
+  .sec-page {
+    padding: 80px 0 40px 0;
+  }
+  .page-header {
+    margin-bottom: 32px;
+  }
 }
 
-#page-home.active {
+/* ═══════════════════════════════════════════
+   HOME PAGE (Hero Block)
+   ═══════════════════════════════════════════ */
+.sec-home {
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 #heroCanvas {
@@ -373,7 +392,7 @@ body.hovering #cursorRing {
   text-align: center;
   width: 100%;
   max-width: 600px;
-  padding: 80px 24px 120px 24px;
+  padding: 40px 24px 80px 24px;
 }
 
 .home-dateline {
@@ -398,6 +417,7 @@ body.hovering #cursorRing {
   display: flex;
   flex-direction: column;
   align-items: center;
+  user-select: none;
 }
 
 .nothing-title .font-sub {
@@ -495,14 +515,22 @@ body.hovering #cursorRing {
     flex-direction: column;
     gap: 12px;
     text-align: center;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
   }
   .nothing-footer-links {
     gap: 20px;
   }
+  .sec-home {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 80px;
+  }
 }
 
 /* ═══════════════════════════════════════════
-   ABOUT PAGE
+   ABOUT SECTION
    ═══════════════════════════════════════════ */
 .about-grid {
   display: grid;
@@ -577,7 +605,7 @@ body.hovering #cursorRing {
 }
 
 /* ═══════════════════════════════════════════
-   EXPERIENCE PAGE (TIMELINE)
+   EXPERIENCE SECTION (TIMELINE)
    ═══════════════════════════════════════════ */
 .timeline {
   position: relative;
@@ -688,7 +716,7 @@ body.hovering #cursorRing {
 }
 
 /* ═══════════════════════════════════════════
-   SKILLS PAGE (REGISTER MAP & CERTS)
+   SKILLS SECTION (REGISTER MAP & CERTS)
    ═══════════════════════════════════════════ */
 .reg-map {
   background: var(--card-bg);
@@ -875,7 +903,7 @@ body.hovering #cursorRing {
 }
 
 /* ═══════════════════════════════════════════
-   PROJECTS PAGE
+   PROJECTS SECTION
    ═══════════════════════════════════════════ */
 .projects-grid {
   display: grid;
@@ -984,7 +1012,7 @@ body.hovering #cursorRing {
 }
 
 /* ═══════════════════════════════════════════
-   CONTACT PAGE
+   CONTACT SECTION
    ═══════════════════════════════════════════ */
 .contact-inner {
   text-align: center;

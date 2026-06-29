@@ -93,7 +93,7 @@ function initThreeParticles() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   // Particles Geometry
-  const particlesCount = 60;
+  const particlesCount = 50;
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array(particlesCount * 3);
   const velocities = [];
@@ -105,8 +105,8 @@ function initThreeParticles() {
     positions[i + 2] = (Math.random() - 0.5) * 5;
 
     velocities.push({
-      x: (Math.random() - 0.5) * 0.003,
-      y: (Math.random() - 0.5) * 0.003,
+      x: (Math.random() - 0.5) * 0.002,
+      y: (Math.random() - 0.5) * 0.002,
       z: (Math.random() - 0.5) * 0.001
     });
   }
@@ -115,10 +115,10 @@ function initThreeParticles() {
 
   // Particle Material (Clean White Dots for Nothing Tech)
   const material = new THREE.PointsMaterial({
-    size: 0.035,
+    size: 0.03,
     color: 0xffffff,
     transparent: true,
-    opacity: 0.45,
+    opacity: 0.35,
     sizeAttenuation: true
   });
 
@@ -155,8 +155,8 @@ function initThreeParticles() {
     }
 
     geometry.attributes.position.needsUpdate = true;
-    points.rotation.y += 0.0005;
-    points.rotation.x += 0.0002;
+    points.rotation.y += 0.0003;
+    points.rotation.x += 0.0001;
 
     renderer.render(scene, camera);
   }
@@ -165,49 +165,7 @@ function initThreeParticles() {
 }
 
 // =========================================================================
-// 4. SPA NAVIGATION
-// =========================================================================
-function showPage(pageId) {
-  const pages = document.querySelectorAll('.page');
-  const navLinks = document.querySelectorAll('.nav-link');
-  let targetPage = document.getElementById(`page-${pageId}`);
-
-  if (!targetPage) return;
-
-  // Deactivate all pages
-  pages.forEach(p => {
-    p.classList.remove('visible');
-    setTimeout(() => {
-      if (!p.classList.contains('visible')) {
-        p.classList.remove('active');
-      }
-    }, 350);
-  });
-
-  // Activate target page
-  targetPage.classList.add('active');
-  setTimeout(() => {
-    targetPage.classList.add('visible');
-  }, 50);
-
-  // Update nav active classes
-  navLinks.forEach(link => {
-    if (link.getAttribute('data-page') === pageId) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
-
-  // Scroll to top of viewport
-  window.scrollTo({ top: 0 });
-  
-  // Log navigation to toast as interactive feedback
-  showToast(`ACCESS_SEC: ${pageId.toUpperCase()}`);
-}
-
-// =========================================================================
-// 5. CUSTOM CURSOR INTEGRATION
+// 4. CUSTOM CURSOR INTEGRATION
 // =========================================================================
 function initCustomCursor() {
   const dot = document.getElementById('cursorDot');
@@ -247,7 +205,7 @@ function initCustomCursor() {
   requestAnimationFrame(updateCursor);
 
   // Add Hovering Class
-  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .scroll-hint, .nothing-menu-item';
+  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .nothing-menu-item';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hoverables)) {
       document.body.classList.add('hovering');
@@ -262,50 +220,72 @@ function initCustomCursor() {
 }
 
 // =========================================================================
-// 6. INITIALIZATION
+// 5. INITIALIZATION
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Navigation Event Listeners
-  document.querySelectorAll('.nav-link').forEach(link => {
+  const navLinks = document.querySelectorAll('#navLinks a[href^="#"]');
+  const hamburger = document.getElementById('hamburger');
+  const navLinksContainer = document.getElementById('navLinks');
+
+  // Navigation Links Click Event (Smooth Scroll and Mobile Drawer Auto-Close)
+  navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const pageId = link.getAttribute('data-page');
-      showPage(pageId);
+      const targetId = link.getAttribute('href');
+      const targetSec = document.querySelector(targetId);
       
-      // Close hamburger menu if open
-      const navLinks = document.getElementById('navLinks');
-      const hamburger = document.getElementById('hamburger');
-      if (navLinks && navLinks.classList.contains('mobile-open')) {
-        navLinks.classList.remove('mobile-open');
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Auto-close hamburger menu on mobile
+      if (navLinksContainer && navLinksContainer.classList.contains('mobile-open')) {
+        navLinksContainer.classList.remove('mobile-open');
         hamburger.classList.remove('active');
       }
     });
   });
 
-  // Generic target page triggers (for buttons on home page, etc.)
-  document.addEventListener('click', e => {
-    const targetLink = e.target.closest('[data-target-page]');
-    if (targetLink) {
+  // Home Page Nothing Menu smooth scrolling
+  document.querySelectorAll('.nothing-menu-item[href^="#"]').forEach(item => {
+    item.addEventListener('click', (e) => {
       e.preventDefault();
-      const pageId = targetLink.getAttribute('data-target-page');
-      showPage(pageId);
-    }
+      const targetId = item.getAttribute('href');
+      const targetSec = document.querySelector(targetId);
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   });
 
   // Mobile Hamburger Toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
+  if (hamburger && navLinksContainer) {
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent immediately closing from document click
       hamburger.classList.toggle('active');
-      navLinks.classList.toggle('mobile-open');
+      navLinksContainer.classList.toggle('mobile-open');
+    });
+    
+    // Close mobile drawer when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navLinksContainer.contains(e.target) && !hamburger.contains(e.target)) {
+        if (navLinksContainer.classList.contains('mobile-open')) {
+          navLinksContainer.classList.remove('mobile-open');
+          hamburger.classList.remove('active');
+        }
+      }
     });
   }
 
-  // Logo redirects to Home
+  // Logo redirects / scrolls to Home
   const logo = document.getElementById('navLogo');
   if (logo) {
-    logo.addEventListener('click', () => showPage('home'));
+    logo.addEventListener('click', () => {
+      const homeSec = document.getElementById('home');
+      if (homeSec) {
+        homeSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   }
 
   // Scroll Progress Bar calculation
@@ -315,6 +295,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     progress.style.width = `${scrollPercent}%`;
   });
+
+  // ScrollSpy: Update active nav links during scroll
+  const sections = document.querySelectorAll('section[id]');
+  const scrollSpyOptions = {
+    root: null,
+    rootMargin: '-30% 0px -60% 0px', // triggers when section dominates viewport
+    threshold: 0
+  };
+
+  const scrollSpyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, scrollSpyOptions);
+
+  sections.forEach(section => scrollSpyObserver.observe(section));
 
   // Deobfuscate emails
   document.querySelectorAll('.contact-email').forEach(el => {
@@ -341,20 +346,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Core Features Init
   initCustomCursor();
   initThreeParticles();
-  
-  // Ensure home page is active and visible on load
-  const homePage = document.getElementById('page-home');
-  if (homePage) {
-    homePage.classList.add('active');
-    setTimeout(() => homePage.classList.add('visible'), 50);
-  }
 
   // Show welcome toast
   setTimeout(() => showToast('SYSTEM ONLINE — SAKET SANKHLA PORTFOLIO'), 800);
 });
 
 // =========================================================================
-// 7. LIGHTBOX GALLERY
+// 6. LIGHTBOX GALLERY
 // =========================================================================
 window.openLightbox = function(src, caption) {
   const lightbox = document.getElementById('certLightbox');
