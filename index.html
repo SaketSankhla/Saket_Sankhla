@@ -23,8 +23,8 @@
 
 <body>
 
-  <!-- Scanlines CRT Screen Overlay -->
-  <div id="scanlines"></div>
+  <!-- Dot Grid Overlay -->
+  <div id="dotGrid"></div>
 
   <!-- Custom Cursor -->
   <div id="cursorDot"></div>
@@ -36,7 +36,7 @@
   <!-- Toast Notification Container -->
   <div id="toastContainer"></div>
 
-  <!-- Fixed Top Navigation Bar -->
+  <!-- Navigation Bar -->
   <nav id="navbar">
     <div class="nav-inner">
       <div class="nav-logo" id="navLogo">
@@ -62,39 +62,49 @@
 
   <!-- ═══════════════════════ HOME PAGE ═══════════════════════ -->
   <section id="page-home" class="page active visible">
-    <!-- WebGL Canvas for Floating Particles -->
     <canvas id="heroCanvas"></canvas>
-    <div class="col-rule left"></div>
-    <div class="col-rule right"></div>
     
     <div class="home-inner">
       <div class="home-dateline">GECA AJMER &nbsp;·&nbsp; B.TECH ECE &nbsp;·&nbsp; 2022–2026</div>
       
-      <div class="home-hero-flex">
-        <div class="home-photo-wrap">
-          <img src="assets/saket.jpg" alt="Saket Sankhla" class="home-photo">
-        </div>
-        <div class="home-text-wrap">
-          <h1 class="home-title" id="heroTitle">Saket Sankhla</h1>
-          <div class="home-terminal" id="heroTerminal"></div>
-        </div>
+      <!-- Nothing Dotted Big Fonts -->
+      <div class="nothing-title">
+        <div class="title-line">SAKET</div>
+        <div class="title-line">SANKHLA</div>
+        <div class="title-line font-sub">VLSI &amp; RTL</div>
       </div>
 
-      <div class="home-actions">
-        <a href="#" class="btn-primary" data-target-page="projects">[ VIEW PROJECTS ]</a>
-        <a href="#" class="btn-secondary" data-target-page="contact">[ CONTACT ]</a>
-      </div>
-
-      <div class="home-socials">
-        <a href="https://github.com/SaketSankhla" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#" class="contact-email" data-user="saketsankh18" data-domain="gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <!-- Nothing Menu Stack -->
+      <div class="nothing-menu">
+        <a href="#" class="nothing-menu-item" data-target-page="about">
+          <span>About Me</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#" class="nothing-menu-item" data-target-page="experience">
+          <span>Experience</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#" class="nothing-menu-item" data-target-page="projects">
+          <span>Projects</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="#" class="nothing-menu-item" data-target-page="contact">
+          <span>Contact</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
 
-    <div class="scroll-hint" data-target-page="about">
-      <span>scroll</span>
-      <i class="fa-solid fa-chevron-down"></i>
+    <!-- Bottom Footer Links from image -->
+    <div class="nothing-footer">
+      <div class="nothing-footer-links">
+        <a href="https://github.com/SaketSankhla" target="_blank" rel="noopener" class="nothing-footer-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" target="_blank" rel="noopener" class="nothing-footer-link">LinkedIn</a>
+        <a href="resume.html" target="_blank" class="nothing-footer-link">Resume</a>
+      </div>
+      <div class="nothing-footer-links">
+        <span class="nothing-footer-link contact-email" data-user="saketsankh18" data-domain="gmail.com">Email</span>
+      </div>
     </div>
   </section>
 
@@ -401,7 +411,7 @@
             <span class="project-status"><span class="status-dot green"></span> COMPLETED</span>
           </div>
           <h3 class="project-name">Lift Controller (DRDO)</h3>
-          <p class="project-desc">Parameterized N-floor MRL traction elevator controller in Verilog HDL. LOOK scheduling FSM on Xilinx Basys 3 with safety interlocks and dwell timer.</p>
+          <p class="project-desc">Parameterized N-floor MRL traction elevator controller in Verilog HDL. LOOK scheduling FSM on Xilinx Basys 3 FPGA with safety interlocks and dwell timer.</p>
           <div class="project-tags">
             <span class="tech-tag">Verilog</span>
             <span class="tech-tag">FSM</span>
@@ -475,28 +485,26 @@
       
       <p class="contact-sub">Available for internships, research collaborations, and VLSI project discussions.</p>
       
-      <div class="contact-grid">
-        <a href="https://github.com/SaketSankhla" class="contact-card" target="_blank" rel="noopener">
-          <span class="contact-icon"><i class="fa-brands fa-github"></i></span>
-          <span class="contact-label">GitHub</span>
+      <!-- Contact stack exactly matching the Nothing menu format from image -->
+      <div class="nothing-menu" style="max-width: 600px;">
+        <a href="https://github.com/SaketSankhla" class="nothing-menu-item" target="_blank" rel="noopener">
+          <span>GitHub</span>
           <span class="contact-handle">@SaketSankhla</span>
         </a>
-        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" class="contact-card" target="_blank" rel="noopener">
-          <span class="contact-icon"><i class="fa-brands fa-linkedin"></i></span>
-          <span class="contact-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" class="nothing-menu-item" target="_blank" rel="noopener">
+          <span>LinkedIn</span>
           <span class="contact-handle">Saket Sankhla</span>
         </a>
-        <a href="#" class="contact-card contact-email" data-user="saketsankh18" data-domain="gmail.com">
-          <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
-          <span class="contact-label">Email</span>
+        <a href="#" class="nothing-menu-item contact-email" data-user="saketsankh18" data-domain="gmail.com">
+          <span>Email</span>
           <span class="contact-handle link-handle">loading...</span>
         </a>
       </div>
       
-      <div class="contact-footer">
+      <div class="contact-footer" style="margin-top: 40px;">
         <span>&copy; 2026 Saket Sankhla</span>
         <span class="contact-footer-sep">·</span>
-        <span>Built with HTML / CSS / JS</span>
+        <span>Redesigned in Nothing Tech Aesthetic</span>
       </div>
     </div>
   </section>

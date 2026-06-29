@@ -4,7 +4,7 @@
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.chars = '!<>-_\\\\/[]{}—=+*^?#________';
     this.update = this.update.bind(this);
   }
   setText(newText) {
@@ -37,7 +37,7 @@ class TextScramble {
           char = this.randomChar();
           this.queue[i].char = char;
         }
-        output += `<span style="color: #76b900">${char}</span>`;
+        output += `<span style="color: #ffffff">${char}</span>`;
       } else {
         output += from;
       }
@@ -64,7 +64,7 @@ function showToast(message) {
   
   const toast = document.createElement('div');
   toast.className = 'toast';
-  toast.innerHTML = `<i class="fa-solid fa-terminal"></i> <span>${message}</span>`;
+  toast.innerHTML = `<i class="fa-solid fa-circle"></i> <span>${message}</span>`;
   
   container.appendChild(toast);
   
@@ -93,7 +93,7 @@ function initThreeParticles() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   // Particles Geometry
-  const particlesCount = 80;
+  const particlesCount = 60;
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array(particlesCount * 3);
   const velocities = [];
@@ -105,20 +105,20 @@ function initThreeParticles() {
     positions[i + 2] = (Math.random() - 0.5) * 5;
 
     velocities.push({
-      x: (Math.random() - 0.5) * 0.005,
-      y: (Math.random() - 0.5) * 0.005,
-      z: (Math.random() - 0.5) * 0.002
+      x: (Math.random() - 0.5) * 0.003,
+      y: (Math.random() - 0.5) * 0.003,
+      z: (Math.random() - 0.5) * 0.001
     });
   }
 
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-  // Particle Material
+  // Particle Material (Clean White Dots for Nothing Tech)
   const material = new THREE.PointsMaterial({
-    size: 0.04,
-    color: 0x76b900,
+    size: 0.035,
+    color: 0xffffff,
     transparent: true,
-    opacity: 0.65,
+    opacity: 0.45,
     sizeAttenuation: true
   });
 
@@ -155,8 +155,8 @@ function initThreeParticles() {
     }
 
     geometry.attributes.position.needsUpdate = true;
-    points.rotation.y += 0.0008;
-    points.rotation.x += 0.0004;
+    points.rotation.y += 0.0005;
+    points.rotation.x += 0.0002;
 
     renderer.render(scene, camera);
   }
@@ -181,7 +181,7 @@ function showPage(pageId) {
       if (!p.classList.contains('visible')) {
         p.classList.remove('active');
       }
-    }, 400);
+    }, 350);
   });
 
   // Activate target page
@@ -247,7 +247,7 @@ function initCustomCursor() {
   requestAnimationFrame(updateCursor);
 
   // Add Hovering Class
-  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .scroll-hint';
+  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .scroll-hint, .nothing-menu-item';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hoverables)) {
       document.body.classList.add('hovering');
@@ -262,84 +262,7 @@ function initCustomCursor() {
 }
 
 // =========================================================================
-// 6. TERMINAL WRITER (BOOT SEQUENCE)
-// =========================================================================
-function runTerminalBoot() {
-  const terminal = document.getElementById('heroTerminal');
-  if (!terminal) return;
-
-  terminal.innerHTML = '';
-
-  const BOOT_LINES = [
-    'Initializing Saket_Sankhla_Profile...',
-    'Loading Digital VLSI & RTL design core...',
-    'Establishing AMBA APB-AHB bus protocols bridge...',
-    'Deploying lookup scheduler elevator controller...',
-    'System ready. Access granted.'
-  ];
-
-  const TYPE_SPEED = 18; 
-  const LINE_DELAY = 220;
-
-  const lineEls = BOOT_LINES.map(() => {
-    const lineEl = document.createElement('div');
-    lineEl.className = 'terminal-line';
-    lineEl.style.display = 'none';
-    
-    const prompt = document.createElement('span');
-    prompt.className = 'terminal-prompt';
-    prompt.textContent = '>';
-    
-    const content = document.createElement('span');
-    content.className = 'terminal-content';
-    
-    const cursor = document.createElement('span');
-    cursor.className = 'terminal-cursor';
-    cursor.textContent = '█';
-    cursor.style.display = 'none';
-
-    lineEl.append(prompt, content, cursor);
-    terminal.appendChild(lineEl);
-    return { lineEl, content, cursor };
-  });
-
-  function typeLine(index, callback) {
-    const { lineEl, content, cursor } = lineEls[index];
-    const text = BOOT_LINES[index];
-
-    lineEl.style.display = 'flex';
-    cursor.style.display = 'inline-block';
-
-    let charIdx = 0;
-    function type() {
-      if (charIdx < text.length) {
-        content.textContent += text[charIdx++];
-        setTimeout(type, TYPE_SPEED);
-      } else {
-        cursor.style.display = 'none';
-        if (callback) setTimeout(callback, LINE_DELAY);
-      }
-    }
-    type();
-  }
-
-  function run(idx) {
-    if (idx < BOOT_LINES.length) {
-      typeLine(idx, () => run(idx + 1));
-    } else {
-      // Keep last prompt with a blinking cursor
-      const lastLine = lineEls[BOOT_LINES.length - 1];
-      if (lastLine) {
-        lastLine.cursor.style.display = 'inline-block';
-      }
-    }
-  }
-
-  run(0);
-}
-
-// =========================================================================
-// 7. INITIALIZATION
+// 6. INITIALIZATION
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   // Navigation Event Listeners
@@ -399,23 +322,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const domain = el.getAttribute('data-domain');
     if (user && domain) {
       const email = `${user}@${domain}`;
-      el.setAttribute('href', `mailto:${email}`);
+      
+      // If it's a card/link, set href
+      if (el.tagName === 'A' || el.closest('a')) {
+        const linkEl = el.tagName === 'A' ? el : el.closest('a');
+        linkEl.setAttribute('href', `mailto:${email}`);
+      }
+      
       const handle = el.querySelector('.link-handle');
-      if (handle) handle.textContent = email;
+      if (handle) {
+        handle.textContent = email;
+      } else {
+        el.textContent = email;
+      }
     }
   });
-
-  // Title Scramble Effect
-  const titleEl = document.getElementById('heroTitle');
-  if (titleEl) {
-    const scramble = new TextScramble(titleEl);
-    scramble.setText('Saket Sankhla');
-  }
 
   // Core Features Init
   initCustomCursor();
   initThreeParticles();
-  runTerminalBoot();
   
   // Ensure home page is active and visible on load
   const homePage = document.getElementById('page-home');
@@ -423,13 +348,13 @@ document.addEventListener('DOMContentLoaded', () => {
     homePage.classList.add('active');
     setTimeout(() => homePage.classList.add('visible'), 50);
   }
-  
+
   // Show welcome toast
   setTimeout(() => showToast('SYSTEM ONLINE — SAKET SANKHLA PORTFOLIO'), 800);
 });
 
 // =========================================================================
-// 8. LIGHTBOX GALLERY
+// 7. LIGHTBOX GALLERY
 // =========================================================================
 window.openLightbox = function(src, caption) {
   const lightbox = document.getElementById('certLightbox');
