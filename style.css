@@ -217,7 +217,7 @@ body.hovering #cursorRing {
   border-color: var(--accent-color);
 }
 
-/* Optimization: Expanded Touch Target Size for Hamburger Menu on Phones */
+/* touch targets optimized for mobile screens */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -228,7 +228,7 @@ body.hovering #cursorRing {
   height: 44px;
   padding: 10px;
   cursor: pointer;
-  z-index: 1001; /* Above mobile drawer link overlay */
+  z-index: 1001;
 }
 
 .hamburger span {
@@ -345,10 +345,18 @@ body.hovering #cursorRing {
   letter-spacing: 0.1em;
 }
 
+/* Scroll Animation: Horizontal Drawing Line */
 .page-line {
   flex-grow: 1;
   height: 1px;
   background: rgba(255, 255, 255, 0.08);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible .page-line {
+  transform: scaleX(1);
 }
 
 @media (max-width: 768px) {
@@ -357,6 +365,40 @@ body.hovering #cursorRing {
   }
   .page-header {
     margin-bottom: 32px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS (MINIMAL)
+   ═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation helper for child elements */
+.reveal-visible .tl-item,
+.reveal-visible .skill-tag,
+.reveal-visible .cert-card,
+.reveal-visible .project-card,
+.reveal-visible .spec-row {
+  animation: fadeSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -561,6 +603,7 @@ body.hovering #cursorRing {
   justify-content: space-between;
   padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  opacity: 0; /* Animated entry */
 }
 
 .spec-row:last-child {
@@ -632,6 +675,7 @@ body.hovering #cursorRing {
 .tl-item {
   position: relative;
   margin-bottom: 48px;
+  opacity: 0; /* Animated entry */
 }
 
 .tl-item:last-child {
@@ -658,13 +702,14 @@ body.hovering #cursorRing {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   padding: 24px;
-  transition: border-color var(--transition-speed), background-color var(--transition-speed);
+  transition: border-color var(--transition-speed), background-color var(--transition-speed), transform 0.2s;
   box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.05);
 }
 
 .tl-content:hover {
   border-color: var(--accent-color);
   background-color: rgba(255, 255, 255, 0.01);
+  transform: translateY(-2px);
 }
 
 .tl-date {
@@ -778,6 +823,7 @@ body.hovering #cursorRing {
   gap: 6px;
   background: rgba(255, 255, 255, 0.01);
   transition: border-color var(--transition-speed), color var(--transition-speed);
+  opacity: 0; /* Animated entry */
 }
 
 .skill-tag i {
@@ -826,6 +872,7 @@ body.hovering #cursorRing {
   transition: border-color var(--transition-speed), transform 0.2s;
   cursor: pointer;
   box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.05);
+  opacity: 0; /* Animated entry */
 }
 
 .cert-card:hover {
@@ -919,6 +966,7 @@ body.hovering #cursorRing {
   flex-direction: column;
   transition: border-color var(--transition-speed), transform 0.2s;
   box-shadow: 3px 3px 0px rgba(255, 255, 255, 0.05);
+  opacity: 0; /* Animated entry */
 }
 
 .project-card:hover {

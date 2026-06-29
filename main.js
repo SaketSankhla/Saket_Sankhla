@@ -7,11 +7,13 @@ class TextScramble {
     this.chars = '!<>-_\\\\/[]{}—=+*^?#________';
     this.update = this.update.bind(this);
   }
+
   setText(newText) {
     const oldText = this.el.innerText;
     const length = Math.max(oldText.length, newText.length);
     const promise = new Promise((resolve) => this.resolve = resolve);
     this.queue = [];
+    
     for (let i = 0; i < length; i++) {
       const from = oldText[i] || '';
       const to = newText[i] || '';
@@ -19,14 +21,17 @@ class TextScramble {
       const end = start + Math.floor(Math.random() * 12);
       this.queue.push({ from, to, start, end });
     }
+    
     cancelAnimationFrame(this.frameRequest);
     this.frame = 0;
     this.update();
     return promise;
   }
+
   update() {
     let output = '';
     let complete = 0;
+    
     for (let i = 0, n = this.queue.length; i < n; i++) {
       let { from, to, start, end, char } = this.queue[i];
       if (this.frame >= end) {
@@ -42,6 +47,7 @@ class TextScramble {
         output += from;
       }
     }
+    
     this.el.innerHTML = output;
     if (complete === this.queue.length) {
       this.resolve();
@@ -50,6 +56,7 @@ class TextScramble {
       this.frame++;
     }
   }
+
   randomChar() {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
   }
@@ -99,7 +106,6 @@ function initThreeParticles() {
   const velocities = [];
 
   for (let i = 0; i < particlesCount * 3; i += 3) {
-    // X, Y, Z
     positions[i] = (Math.random() - 0.5) * 10;
     positions[i + 1] = (Math.random() - 0.5) * 10;
     positions[i + 2] = (Math.random() - 0.5) * 5;
@@ -194,7 +200,6 @@ function initCustomCursor() {
     dot.style.left = `${dotX}px`;
     dot.style.top = `${dotY}px`;
 
-    // Ring lags behind dot for a beautiful dynamic effect
     ringX += (mouseX - ringX) * 0.15;
     ringY += (mouseY - ringY) * 0.15;
     ring.style.left = `${ringX}px`;
@@ -204,7 +209,6 @@ function initCustomCursor() {
   }
   requestAnimationFrame(updateCursor);
 
-  // Add Hovering Class
   const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .nothing-menu-item';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hoverables)) {
@@ -220,7 +224,7 @@ function initCustomCursor() {
 }
 
 // =========================================================================
-// 5. INITIALIZATION
+// 5. INITIALIZATION & SCROLL REVEAL OBSERVERS
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('#navLinks a[href^="#"]');
@@ -261,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile Hamburger Toggle
   if (hamburger && navLinksContainer) {
     hamburger.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent immediately closing from document click
+      e.stopPropagation();
       hamburger.classList.toggle('active');
       navLinksContainer.classList.toggle('mobile-open');
     });
@@ -277,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Logo redirects / scrolls to Home
+  // Logo scrolls to Home
   const logo = document.getElementById('navLogo');
   if (logo) {
     logo.addEventListener('click', () => {
@@ -300,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('section[id]');
   const scrollSpyOptions = {
     root: null,
-    rootMargin: '-30% 0px -60% 0px', // triggers when section dominates viewport
+    rootMargin: '-30% 0px -60% 0px',
     threshold: 0
   };
 
@@ -321,6 +325,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(section => scrollSpyObserver.observe(section));
 
+  // IntersectionObserver for scroll-reveal animations
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealOptions = {
+    root: null,
+    rootMargin: '0px 0px -8% 0px', // trigger when elements enter viewport
+    threshold: 0.05
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+      }
+    });
+  }, revealOptions);
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
   // Deobfuscate emails
   document.querySelectorAll('.contact-email').forEach(el => {
     const user = el.getAttribute('data-user');
@@ -328,7 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (user && domain) {
       const email = `${user}@${domain}`;
       
-      // If it's a card/link, set href
       if (el.tagName === 'A' || el.closest('a')) {
         const linkEl = el.tagName === 'A' ? el : el.closest('a');
         linkEl.setAttribute('href', `mailto:${email}`);
