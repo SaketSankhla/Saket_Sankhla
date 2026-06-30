@@ -227,37 +227,44 @@ function initCustomCursor() {
 // 5. INITIALIZATION & OBSERVERS
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('#navLinks a[href^="#"]');
+  const navLinks = document.querySelectorAll('#navLinks a');
   const hamburger = document.getElementById('hamburger');
   const navLinksContainer = document.getElementById('navLinks');
 
   // Navigation Links Click Event (Smooth Scroll and Mobile Drawer Auto-Close)
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
       const targetId = link.getAttribute('href');
-      const targetSec = document.querySelector(targetId);
       
-      if (targetSec) {
-        targetSec.scrollIntoView({ behavior: 'smooth' });
-      }
-      
-      // Auto-close hamburger menu on mobile
-      if (navLinksContainer && navLinksContainer.classList.contains('mobile-open')) {
-        navLinksContainer.classList.remove('mobile-open');
-        hamburger.classList.remove('active');
+      // Only smooth scroll if the target is an internal anchor
+      if (targetId && targetId.startsWith('#')) {
+        e.preventDefault();
+        const targetSec = document.querySelector(targetId);
+        if (targetSec) {
+          targetSec.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Auto-close hamburger menu on mobile
+        if (navLinksContainer && navLinksContainer.classList.contains('mobile-open')) {
+          navLinksContainer.classList.remove('mobile-open');
+          hamburger.classList.remove('active');
+        }
       }
     });
   });
 
-  // Home Page Nothing Menu smooth scrolling
-  document.querySelectorAll('.nothing-menu-item[href^="#"]').forEach(item => {
+  // Home Page / Contact Page Nothing Menu smooth scrolling
+  document.querySelectorAll('.nothing-menu-item').forEach(item => {
     item.addEventListener('click', (e) => {
-      e.preventDefault();
       const targetId = item.getAttribute('href');
-      const targetSec = document.querySelector(targetId);
-      if (targetSec) {
-        targetSec.scrollIntoView({ behavior: 'smooth' });
+      
+      // Only smooth scroll if it's an internal anchor starting with '#'
+      if (targetId && targetId.startsWith('#')) {
+        e.preventDefault();
+        const targetSec = document.querySelector(targetId);
+        if (targetSec) {
+          targetSec.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     });
   });
