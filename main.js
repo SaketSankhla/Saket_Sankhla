@@ -209,7 +209,7 @@ function initCustomCursor() {
   }
   requestAnimationFrame(updateCursor);
 
-  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .nothing-menu-item';
+  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .nothing-menu-item, .form-input';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hoverables)) {
       document.body.classList.add('hovering');
@@ -224,7 +224,7 @@ function initCustomCursor() {
 }
 
 // =========================================================================
-// 5. INITIALIZATION & SCROLL REVEAL OBSERVERS
+// 5. INITIALIZATION & OBSERVERS
 // =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('#navLinks a[href^="#"]');
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealElements = document.querySelectorAll('.reveal');
   const revealOptions = {
     root: null,
-    rootMargin: '0px 0px -8% 0px', // trigger when elements enter viewport
+    rootMargin: '0px 0px -8% 0px',
     threshold: 0.05
   };
 
@@ -342,6 +342,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }, revealOptions);
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // Contact Form Transmitter logic
+  const signalForm = document.getElementById('signalForm');
+  if (signalForm) {
+    signalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('formName').value;
+      const email = document.getElementById('formEmail').value;
+      const message = document.getElementById('formMessage').value;
+      
+      showToast('ENCRYPTING_SIGNAL_PAYLOAD...');
+      
+      setTimeout(() => {
+        showToast('DISPATCHING_SIGNAL_TX...');
+        
+        // Construct pre-filled mailto redirection link
+        const subject = encodeURIComponent(`VLSI/RTL Contact from ${name}`);
+        const body = encodeURIComponent(`Sender Name: ${name}\nSender Email: ${email}\n\nMessage:\n${message}`);
+        
+        window.location.href = `mailto:saketsankh18@gmail.com?subject=${subject}&body=${body}`;
+        
+        signalForm.reset();
+      }, 1000);
+    });
+  }
 
   // Deobfuscate emails
   document.querySelectorAll('.contact-email').forEach(el => {
