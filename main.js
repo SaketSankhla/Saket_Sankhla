@@ -209,7 +209,7 @@ function initCustomCursor() {
   }
   requestAnimationFrame(updateCursor);
 
-  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .nothing-menu-item, .form-input';
+  const hoverables = 'a, button, .project-card, .cert-card, .nav-logo, .hamburger, .nothing-menu-item';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hoverables)) {
       document.body.classList.add('hovering');
@@ -342,31 +342,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, revealOptions);
 
   revealElements.forEach(el => revealObserver.observe(el));
-
-  // Contact Form Transmitter logic
-  const signalForm = document.getElementById('signalForm');
-  if (signalForm) {
-    signalForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('formName').value;
-      const email = document.getElementById('formEmail').value;
-      const message = document.getElementById('formMessage').value;
-      
-      showToast('ENCRYPTING_SIGNAL_PAYLOAD...');
-      
-      setTimeout(() => {
-        showToast('DISPATCHING_SIGNAL_TX...');
-        
-        // Construct pre-filled mailto redirection link
-        const subject = encodeURIComponent(`VLSI/RTL Contact from ${name}`);
-        const body = encodeURIComponent(`Sender Name: ${name}\nSender Email: ${email}\n\nMessage:\n${message}`);
-        
-        window.location.href = `mailto:saketsankh18@gmail.com?subject=${subject}&body=${body}`;
-        
-        signalForm.reset();
-      }, 1000);
-    });
-  }
 
   // Deobfuscate emails
   document.querySelectorAll('.contact-email').forEach(el => {
