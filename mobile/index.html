@@ -3,14 +3,14 @@
 
 <head>
   <script>
-    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 900) {
-      window.location.replace('./mobile/index.html');
+    if (!(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) && window.innerWidth >= 900) {
+      window.location.replace('../index.html');
     }
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saket Sankhla | Digital VLSI & Embedded Systems</title>
-  <meta name="description" content="Portfolio of Saket Sankhla — Digital VLSI, RTL Design, AMBA Protocols, Embedded Systems. B.Tech ECE at GECA Ajmer.">
+  <title>Saket Sankhla | VLSI &amp; Embedded (Mobile)</title>
+  <meta name="description" content="Mobile portfolio of Saket Sankhla — Digital VLSI &amp; RTL Design.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,10 +31,6 @@
   <!-- Dot Grid Overlay -->
   <div id="dotGrid"></div>
 
-  <!-- Custom Cursor -->
-  <div id="cursorDot"></div>
-  <div id="cursorRing"></div>
-
   <!-- Top Scroll Progress Bar -->
   <div id="scrollProgress"></div>
 
@@ -54,9 +50,8 @@
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li class="mobile-only"><a href="resume.html" class="nav-link nav-resume-mobile" target="_blank">Resume</a></li>
+        <li class="mobile-only"><a href="../resume.html" class="nav-link nav-resume-mobile" target="_blank">Resume</a></li>
       </ul>
-      <a href="resume.html" class="nav-resume-btn" target="_blank">Resume</a>
       <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
@@ -105,7 +100,7 @@
       <div class="nothing-footer-links">
         <a href="https://github.com/SaketSankhla" target="_blank" rel="noopener" class="nothing-footer-link">GitHub</a>
         <a href="https://www.linkedin.com/in/saket-sankhla-4a193a277" target="_blank" rel="noopener" class="nothing-footer-link">LinkedIn</a>
-        <a href="resume.html" target="_blank" class="nothing-footer-link">Resume</a>
+        <a href="../resume.html" target="_blank" class="nothing-footer-link">Resume</a>
       </div>
       <div class="nothing-footer-links">
         <span class="nothing-footer-link contact-email" data-user="saketsankh18" data-domain="gmail.com">Email</span>
@@ -202,7 +197,7 @@
             <p class="tl-desc">
               Designed noise-isolated power distribution grids and sensor feedback loops for autonomous drone flight nodes.
             </p>
-            <a href="#" onclick="openLightbox('certifications/iitRoorkeeHackathonCertificate.jpg','IIT Roorkee Drone Hackathon Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
+            <a href="#" onclick="openLightbox('../certifications/iitRoorkeeHackathonCertificate.jpg','IIT Roorkee Drone Hackathon Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
           </div>
         </div>
 
@@ -216,7 +211,7 @@
             <p class="tl-desc">
               Engineered a synthesizable APB-to-AHB AMBA bus bridge in SystemVerilog; verified logic routing and resolved clock domain timing errors.
             </p>
-            <a href="#" onclick="openLightbox('certifications/vlsiDesignInternshipCertificate.jpg','Maven Silicon VLSI Design Internship Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
+            <a href="#" onclick="openLightbox('../certifications/vlsiDesignInternshipCertificate.jpg','Maven Silicon VLSI Design Internship Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
           </div>
         </div>
 
@@ -230,7 +225,7 @@
             <p class="tl-desc">
               Studied GSM routing configurations and physical optical fiber transport loops at the central exchange.
             </p>
-            <a href="#" onclick="openLightbox('certifications/bsnlInternshipCertificate.jpg','BSNL Telecom Trainee Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
+            <a href="#" onclick="openLightbox('../certifications/bsnlInternshipCertificate.jpg','BSNL Telecom Trainee Certificate'); return false;" class="tl-cert-link"><i class="fa-solid fa-file-signature"></i> View Certificate</a>
           </div>
         </div>
       </div>
@@ -247,12 +242,6 @@
       </div>
       
       <div class="reg-map">
-        <div class="reg-header">
-          <span class="reg-num">#</span>
-          <span class="reg-area">Area</span>
-          <span class="reg-tags-head">Technologies</span>
-        </div>
-        
         <div class="reg-row">
           <span class="reg-num">0x01</span>
           <span class="reg-area">RTL &amp; VLSI Logic</span>
@@ -306,7 +295,7 @@
         <div class="subsec-label">// SKILL &amp; INTERNSHIP CERTIFICATIONS</div>
         <div class="certs-grid">
           <!-- Cert 1 -->
-          <div class="cert-card" onclick="openLightbox('certifications/vlsiDesignInternshipCertificate.jpg','Maven Silicon VLSI Design Internship Certificate')">
+          <div class="cert-card" onclick="openLightbox('../certifications/vlsiDesignInternshipCertificate.jpg','Maven Silicon VLSI Design Internship Certificate')">
             <div class="cert-meta">
               <div class="cert-header">
                 <span>Internship</span>
@@ -321,13 +310,13 @@
               </div>
             </div>
             <div class="cert-preview-pane">
-              <img src="certifications/vlsiDesignInternshipCertificate.jpg" alt="Maven Silicon" class="cert-preview-img">
+              <img src="../certifications/vlsiDesignInternshipCertificate.jpg" alt="Maven Silicon" class="cert-preview-img">
               <div class="cert-preview-overlay"><i class="fa-solid fa-expand"></i></div>
             </div>
           </div>
           
           <!-- Cert 2 -->
-          <div class="cert-card" onclick="openLightbox('certifications/bsnlInternshipCertificate.jpg','BSNL Telecom Trainee Certificate')">
+          <div class="cert-card" onclick="openLightbox('../certifications/bsnlInternshipCertificate.jpg','BSNL Telecom Trainee Certificate')">
             <div class="cert-meta">
               <div class="cert-header">
                 <span>Internship</span>
@@ -342,13 +331,13 @@
               </div>
             </div>
             <div class="cert-preview-pane">
-              <img src="certifications/bsnlInternshipCertificate.jpg" alt="BSNL" class="cert-preview-img">
+              <img src="../certifications/bsnlInternshipCertificate.jpg" alt="BSNL" class="cert-preview-img">
               <div class="cert-preview-overlay"><i class="fa-solid fa-expand"></i></div>
             </div>
           </div>
           
           <!-- Cert 3 -->
-          <div class="cert-card" onclick="openLightbox('certifications/iitRoorkeeHackathonCertificate.jpg','IIT Roorkee Drone Hackathon Certificate')">
+          <div class="cert-card" onclick="openLightbox('../certifications/iitRoorkeeHackathonCertificate.jpg','IIT Roorkee Drone Hackathon Certificate')">
             <div class="cert-meta">
               <div class="cert-header">
                 <span>Competition</span>
@@ -363,13 +352,13 @@
               </div>
             </div>
             <div class="cert-preview-pane">
-              <img src="certifications/iitRoorkeeHackathonCertificate.jpg" alt="IIT Roorkee" class="cert-preview-img">
+              <img src="../certifications/iitRoorkeeHackathonCertificate.jpg" alt="IIT Roorkee" class="cert-preview-img">
               <div class="cert-preview-overlay"><i class="fa-solid fa-expand"></i></div>
             </div>
           </div>
           
           <!-- Cert 4 -->
-          <div class="cert-card" onclick="openLightbox('certifications/iitbombayHackathonCertificate.jpg','IIT Bombay Hackathon Certificate')">
+          <div class="cert-card" onclick="openLightbox('../certifications/iitbombayHackathonCertificate.jpg','IIT Bombay Hackathon Certificate')">
             <div class="cert-meta">
               <div class="cert-header">
                 <span>Competition</span>
@@ -384,13 +373,13 @@
               </div>
             </div>
             <div class="cert-preview-pane">
-              <img src="certifications/iitbombayHackathonCertificate.jpg" alt="IIT Bombay" class="cert-preview-img">
+              <img src="../certifications/iitbombayHackathonCertificate.jpg" alt="IIT Bombay" class="cert-preview-img">
               <div class="cert-preview-overlay"><i class="fa-solid fa-expand"></i></div>
             </div>
           </div>
           
           <!-- Cert 5 -->
-          <div class="cert-card" onclick="openLightbox('certifications/arduinoCerticate.jpg','Arduino Robotics Certificate')">
+          <div class="cert-card" onclick="openLightbox('../certifications/arduinoCerticate.jpg','Arduino Robotics Certificate')">
             <div class="cert-meta">
               <div class="cert-header">
                 <span>Certification</span>
@@ -405,13 +394,13 @@
               </div>
             </div>
             <div class="cert-preview-pane">
-              <img src="certifications/arduinoCerticate.jpg" alt="Arduino" class="cert-preview-img">
+              <img src="../certifications/arduinoCerticate.jpg" alt="Arduino" class="cert-preview-img">
               <div class="cert-preview-overlay"><i class="fa-solid fa-expand"></i></div>
             </div>
           </div>
           
           <!-- Cert 6 -->
-          <div class="cert-card" onclick="openLightbox('certifications/matlabCertificate.jpg','MATLAB Fundamentals Certificate')">
+          <div class="cert-card" onclick="openLightbox('../certifications/matlabCertificate.jpg','MATLAB Fundamentals Certificate')">
             <div class="cert-meta">
               <div class="cert-header">
                 <span>Certification</span>
@@ -426,7 +415,7 @@
               </div>
             </div>
             <div class="cert-preview-pane">
-              <img src="certifications/matlabCertificate.jpg" alt="MATLAB" class="cert-preview-img">
+              <img src="../certifications/matlabCertificate.jpg" alt="MATLAB" class="cert-preview-img">
               <div class="cert-preview-overlay"><i class="fa-solid fa-expand"></i></div>
             </div>
           </div>
